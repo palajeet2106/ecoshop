@@ -52,7 +52,7 @@
                     <td><?php echo $row['productPrice'];?></td>
                     <td><?php echo $row['productStock'];?></td>
                     <td><?php echo mysqli_fetch_assoc($db->editCategory($row['category']))['name']; ?></td>
-                    <td><?php echo mysqli_fetch_assoc($db->editsubCategory($row['category']))['name']; ?></td>
+                    <td><?php echo mysqli_fetch_assoc($db->editsubCategory($row['subcategory']))['name']; ?></td>
                     <td><?php echo ($row['productStatus']==1)? 'Active' : 'Disable'; ?></td>
                     <td>
                       <a href="update-product.php?id=<?php echo $row['id'];?>&cmd=updateProduct" class = "btn btn-success">Edit</a>

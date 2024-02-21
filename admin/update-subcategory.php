@@ -2,7 +2,8 @@
     include "class.php";
 
     if(isset($_REQUEST['id']) && isset($_REQUEST['cmd']) && $_REQUEST['cmd']=="updateSubcategory"){
-     $row =  $db ->editsubCategory($_REQUEST['id']);
+     $res =  $db ->editsubCategory($_REQUEST['id']);
+     $row= mysqli_fetch_assoc($res);
 
 
     }
@@ -38,7 +39,7 @@
             <div class="card-body">
               <form method="post" action="function.php">
                 <div class="form-group">
-                  <input type="text" name="subcategory" class="form-control" value = <?php echo isset($row) ? $row['name'] : ''; ?>>
+                  <input type="text" name="subcategory" class="form-control" value ="<?php echo isset($row) ? $row['name'] : ''; ?>">
                 </div>
 
                 <div class="form-group">

@@ -44,7 +44,7 @@ class connection
   }
   function ProductsDetails()
   {
-    $sql = "SELECT * FROM product";
+    $sql = "SELECT * FROM product limit 8";
     return mysqli_query($this->conn, $sql);
   }
 
@@ -92,6 +92,32 @@ class connection
     }
 
   }
+
+  function ProductsDetailsByCategory($categoryname){
+    $product=array();
+    $sql= "SELECT * FROM category WHERE name LIKE '%$categoryname%'";
+    $res= mysqli_query($this->conn, $sql);
+    if(mysqli_num_rows($res)>0){
+      while($row=mysqli_fetch_assoc($res)){
+
+           $productres= $this->getProductsByCategory($row['id']);
+           if(mysqli_num_rows($productres)>0){
+            while($data= mysqli_fetch_assoc($productres)){
+              $product[]= $data;
+            }
+           }
+      }
+    }
+    return $product;
+
+  }
+
+  function getProductsByCategory($cid){
+    $sql= "SELECT * FROM product WHERE category='$cid' LIMIT 8";
+    $res= mysqli_query($this->conn, $sql);
+    return $res;
+  }
+
 
 
 

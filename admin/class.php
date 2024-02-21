@@ -85,7 +85,8 @@ class connection
   function editsubCategory($id)
   {
     $sql = "SELECT * FROM subcategory where id='$id'";
-    return  mysqli_query($this->conn, $sql);
+    $res= mysqli_query($this->conn, $sql);
+    return $res;
     // $row = mysqli_fetch_assoc($res);
     // return $row;
   }

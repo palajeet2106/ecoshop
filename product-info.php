@@ -52,7 +52,9 @@
                     <div class="col-md-6">
                         <div class="product-info-content" data-aos="fade-left">
                             <span class="wrapper-subtitle">
-                            <?php $category= $db->editCategory($data['category']);
+                            <?php 
+                            
+                            $category= $db->editCategory($data['category']);
                       $categoryname= mysqli_fetch_assoc($category);
                       echo isset($categoryname['name'])? $categoryname['name']: '';?>
                             </span>
@@ -169,8 +171,8 @@
                             <div class="product-details">
                                 <p class="category">Category : <span class="inner-text">
                                 <?php $category= $db->editCategory($data['category']);
-                      $categoryname= mysqli_fetch_assoc($category);
-                      echo isset($categoryname['name'])? $categoryname['name']: '';?>
+                                    $categoryname= mysqli_fetch_assoc($category);
+                                    echo isset($categoryname['name'])? $categoryname['name']: '';?>
                                 </span></p>
                                 <p class="tags">Tags : <span class="inner-text">Beer, Foamer</span></p>
                                 <p class="sku">SKU : <span class="inner-text">KE-91039</span></p>
