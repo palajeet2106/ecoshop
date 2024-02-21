@@ -86,6 +86,23 @@ if(isset($_POST['categoryid'])){
   }
 }
 
+if(isset($_POST['change'])){
+  $cid= $_POST['cid'];
+  $res= $db->changeSubcategory($cid);
+  if(mysqli_num_rows($res)>0){
+    ?><option selected disabled>--Select SubCategory--</option><?php
+    while($row=mysqli_fetch_assoc($res)){
+      ?>
+        <option value="<?php echo $row['id'];?>"><?php echo $row['name'];?></option>
+
+<?php
+    }
+  }
+}
+
+
+
+
 if(isset($_POST['btnaddproduct'])){
   if($db->addProduct()){
     ?>
@@ -108,7 +125,6 @@ if(isset($_POST['updateProduct'])){
 <?php
   }
 }
-
 
 if(isset($_REQUEST['id']) && isset($_REQUEST['cmd']) && $_REQUEST['cmd']=="deleteProduct"){
   if($db->deleteProduct($_REQUEST['id'])){

@@ -159,7 +159,7 @@
                                         </div>
                                         <div class="details">
                                             <h4 class="footer-heading">Email:</h4>
-                                            <p>ajeet@gmail.com</p>
+                                            <p>echoShop@gmail.com</p>
                                         </div>
                                     </div>
                                 </div>
@@ -209,7 +209,7 @@
                             </a>
                         </div>
                         <div class="copyright">
-                            <p>©2024 <a href="https://quomodosoft.com/" target="_blank" class="inner-text">Quomodosoft</a> All rights reserved</p>
+                            <p>©2024 <a href="https://quomodosoft.com/" target="_blank" class="inner-text">echoShop</a> All rights reserved</p>
                         </div>
                     </div>
                     <div class="footer-payment-mode">

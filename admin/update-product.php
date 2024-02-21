@@ -61,11 +61,15 @@
                  <select class="form-control" name="category" id="category" required>
                     <option selected disabled>--Select Category--</option>
                    <?php  $db ->displayCategoryName($data['category']); ?>
+
                  </select>
                 </div>
                 <div class="form-group">
+
                  <select class="form-control" name="subcategory" id="subcategory" required>
+
                     <option selected disabled>--Select SubCategory--</option>
+                    <?php  echo $db ->displaySubcategoryName($data['subcategory']); ?>
                  </select>
                 </div>
 
@@ -128,10 +132,11 @@
   $(function(){
     $("#category").change(function(){
       var categoryid= $(this).val()
+
       $.ajax({
         type: "POST",
         url: "function.php",
-        data: {categoryid:categoryid},
+        data: {cid:categoryid, change:'subcategory'},
         success: function(res){
 
           $("#subcategory").html(res);
@@ -139,7 +144,9 @@
       })
 
     })
+
   })
 </script>
+
 
 

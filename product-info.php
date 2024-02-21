@@ -1,5 +1,8 @@
 <!--------------- header-section --------------->
-<?php include("header.php"); ?>
+<?php
+ include("header.php");
+
+ ?>
     <!--------------- header-section-end --------------->
 
     <!--------------- products-info-section--------------->
@@ -17,15 +20,20 @@
                     <div class="col-md-6">
                         <div class="product-info-img" data-aos="fade-right">
                             <div class="swiper product-top">
-                                <div class="product-discount-content">
+                                <!-- <div class="product-discount-content">
                                     <h4>-50%</h4>
-                                </div>
+                                </div> -->
                                 <div class="swiper-wrapper">
+                                    <?php
+                                    include("class.php");
+                                    $res = $db -> viewProducts($_REQUEST['id']);
+                                    $data= mysqli_fetch_assoc($res);
+                                    ?>
                                     <div class="swiper-slide slider-top-img">
-                                        <img src="assets/images/homepage-one/product-img/p-img-37.webp" alt="img">
+                                        <img src="admin/<?php echo $data['featuredPhoto']; ?>" alt="img">
                                     </div>
                                     <div class="swiper-slide slider-top-img">
-                                        <img src="assets/images/homepage-one/product-img/p-img-38.webp" alt="img">
+                                        <img src="admin/<?php echo $data['featuredPhoto']; ?>" alt="img">
                                     </div>
                                 </div>
                             </div>
@@ -43,8 +51,12 @@
                     </div>
                     <div class="col-md-6">
                         <div class="product-info-content" data-aos="fade-left">
-                            <span class="wrapper-subtitle">Vegetable</span>
-                            <h3 class="wrapper-heading">Eggplant fruit Leucinodes orbonalis
+                            <span class="wrapper-subtitle">
+                            <?php $category= $db->editCategory($data['category']);
+                      $categoryname= mysqli_fetch_assoc($category);
+                      echo isset($categoryname['name'])? $categoryname['name']: '';?>
+                            </span>
+                            <h3 class="wrapper-heading"><?php echo $data['productName'];?>
                             </h3>
                             <div class="ratings">
                                 <span>
@@ -71,14 +83,14 @@
                             </div>
                             <div class="price">
                                 <span class="price-cut">$9.99</span>
-                                <span class="new-price">$6.99</span>
+                                <span class="new-price">₹ <?php echo $data['productPrice']; ?></span>
                             </div>
-                            <p class="content-paragraph">It is a long established fact that a reader will be distracted
-                                by <span class="inner-text">the readable there content of a page.</span></p>
+                            <p class="content-paragraph"><?php echo $data['description']; ?>
+                                 <span class="inner-text"><span></p>
                             <hr>
                             <div class="product-availability">
-                                <span>Availabillity : </span>
-                                <span class="inner-text">132 Products Available</span>
+                                <span>Availability : </span>
+                                <span class="inner-text"><?php echo $data['productStock']; ?> Products Available</span>
                             </div>
                             <div class="product-size">
                                 <P class="size-title">Weight</P>
@@ -155,7 +167,11 @@
                             </div>
                             <hr>
                             <div class="product-details">
-                                <p class="category">Category : <span class="inner-text">Kitchen</span></p>
+                                <p class="category">Category : <span class="inner-text">
+                                <?php $category= $db->editCategory($data['category']);
+                      $categoryname= mysqli_fetch_assoc($category);
+                      echo isset($categoryname['name'])? $categoryname['name']: '';?>
+                                </span></p>
                                 <p class="tags">Tags : <span class="inner-text">Beer, Foamer</span></p>
                                 <p class="sku">SKU : <span class="inner-text">KE-91039</span></p>
                             </div>
@@ -276,14 +292,7 @@
                         <div class="product-intro-section">
                             <h5 class="intro-heading">Introduction</h5>
                             <p class="product-details">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a type specimen book. It has
-                                survived not only five centuries but also the on leap into electronic typesetting,
-                                remaining essentially unchanged. It wasn’t popularised in the 1960s with the release of
-                                Letraset sheets containing Lorem Ipsum passages, andei more recently with desktop
-                                publishing software like Aldus PageMaker including versions of Lorem Ipsum to make a
-                                type specimen book.
+                              <?php echo $data['description']; ?>
                             </p>
                         </div>
                         <div class="product-feature">

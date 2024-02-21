@@ -157,22 +157,23 @@ class connection
   // mulitple image update
 
     $sliderfiles = $_FILES['sliderspics']['name'];
+
     $filesstr = implode(',', $sliderfiles);
 
-  if(count($sliderfiles)>0){
-    for ($i = 0; $i < count($sliderfiles); $i++) {
-      $filespath = $folder.basename($sliderfiles[$i]);
-      move_uploaded_file($_FILES['sliderspics']['tmp_name'][$i], $filespath);
+    if(!empty($sliderfiles[0])){
+      for ($i = 0; $i < count($sliderfiles); $i++) {
+          $filespath = $folder.basename($sliderfiles[$i]);
+          move_uploaded_file($_FILES['sliderspics']['tmp_name'][$i], $filespath);
+
+
+      }
+    }else{
+        $filesstr= $_POST['sliderpics_db'];
+
     }
-  }else{
-      $filesstr= $_POST['sliderpics_db'];
-  }
 
 
-
-
-
-    echo $sql = "UPDATE `product` SET `productCode`='" . $_POST['productcode'] . "',`productName`='" . $_POST['productname'] . "',`productTitle`='" . $_POST['producttitle'] . "',`productSlug`='" . $_POST['slug'] . "',`productPrice`='" . $_POST['productprice'] . "',`productStock`='" . $_POST['stock'] . "',`category`='" . $_POST['category'] . "',`subcategory`='" . $_POST['subcategory'] . "',`featuredPhoto`='$path',`variationPhoto`='$filesstr',`description`='" . $_POST['description'] . "',`productStatus`='" . $_POST['status'] . "' WHERE id = '$id'";
+    $sql = "UPDATE `product` SET `productCode`='" . $_POST['productcode'] . "',`productName`='" . $_POST['productname'] . "',`productTitle`='" . $_POST['producttitle'] . "',`productSlug`='" . $_POST['slug'] . "',`productPrice`='" . $_POST['productprice'] . "',`productStock`='" . $_POST['stock'] . "',`category`='" . $_POST['category'] . "',`subcategory`='" . $_POST['subcategory'] . "',`featuredPhoto`='$path',`variationPhoto`='$filesstr',`description`='" . $_POST['description'] . "',`productStatus`='" . $_POST['status'] . "' WHERE id = '$id'";
     $res = mysqli_query($this->conn, $sql);
     return $res;
   }
@@ -205,13 +206,13 @@ class connection
     }
 
   }
-  function displaySubcategoryName($categoryid , $sid){
+  function displaySubcategoryName($subcategoryid){
     $selected = '';
-    $sql = "SELECT * FROM subcategory WHERE category_id = '$categoryid'";
+    $sql = "SELECT * FROM subcategory WHERE id = '$subcategoryid'";
     $res = mysqli_query($this ->conn , $sql);
-    if(mysqli_num_rows($res)){
+    if(mysqli_num_rows($res)>0){
       while($row = mysqli_fetch_assoc($res)){
-        if($sid != 0 && $row['id'] == $sid){
+        if($row['id'] == $subcategoryid){
           $selected = 'selected';
         }else{
           $selected = '';
@@ -223,6 +224,21 @@ class connection
       }
     }
 
+  }
+
+// get subcategory according to category
+  function changeSubcategory($cid){
+    $sql = "SELECT * FROM subcategory WHERE category_id = '$cid'";
+    $res = mysqli_query($this ->conn , $sql);
+    if(mysqli_num_rows($res)>0){
+      while($row = mysqli_fetch_assoc($res)){
+
+        ?>
+        <option value="<?php echo $row['id'] ?>"><?php echo $row['name']; ?></option>
+        <?php
+
+      }
+    }
   }
 
 

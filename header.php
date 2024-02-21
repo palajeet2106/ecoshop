@@ -76,7 +76,7 @@
                                             fill="#27AE60" />
                                     </svg>
                                 </span>
-                                <span class="contact-text"> ajeet@gmail.com</span>
+                                <span class="contact-text"> echoShop@gmail.com</span>
                             </a>
                         </div>
                     </div>
