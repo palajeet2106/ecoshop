@@ -1194,7 +1194,7 @@
                         </div>
                     </div>
                     <a href="become-vendor.php" class="shop-btn">
-                        Seller Login
+                        User Login
                     </a>
                 </div>
             </div>

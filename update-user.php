@@ -1,7 +1,12 @@
-<?php 
-include("header.php");
+<?php include("header.php");
 include("class.php");
- ?>
+
+if(isset($_REQUEST['id']) && isset($_REQUEST['cmd']) && $_REQUEST['cmd'] == 'updateUser'){
+    $id = $_REQUEST['id'];
+    $row = $db ->editUser($id);
+}
+
+?>
     <!--------------- header-section-end --------------->
 
     <!--------------- login-section--------------->
@@ -12,14 +17,10 @@ include("class.php");
                     <div class="col-lg-6 col-xs-12">
                         <form action="function.php" method="post" enctype="multipart/form-data">
                         <div class="review-form box-shadows">
-                            <div class="review-form-text">
-                                <h5 class="comment-title">Create Account</h5>
-                                <img src="assets/images/homepage-one/vector-line.png" alt="img">
-                            </div>
                             <div class=" account-inner-form">
                                 <div class="review-form-name">
                                     <label for="username" class="form-label">Username*</label>
-                                    <input type="text" name="username" class="form-control" placeholder="username">
+                                    <input type="text" name="username" class="form-control" value="<?php echo $row['username']; ?>">
                                 </div>
                             </div>
                             <div class=" account-inner-form">
@@ -52,29 +53,10 @@ include("class.php");
                                     <input type="password" name="confirmPassword" class="form-control" placeholder="******">
                                 </div>
                             </div>
-<!-- 
 
-
-                            <div class="review-form-name checkbox">
-                                <div class="checkbox-item">
-                                    <input type="checkbox">
-                                    <p class="remember">
-                                        I agree all terms and condition in <span class="inner-text">EcoShop.</span></p>
-                                </div>
-                            </div> -->
                             <div class="login-btn text-center">
                                 <!-- <a href="#" class="shop-btn">Create an Account</a> -->
-                                <input type="submit" name="submit" class="shop-btn" value="Create an Account">
-                               <div>
-                                <?php
-                                $res = $db ->displayUser();
-                                $row = mysqli_fetch_assoc($res);
-
-                                ?>
-                               <a href="update-user.php?id=<?php echo $row['id']; ?>&cmd=updateUser" class = "btn btn-warning form-control">edit</a><br>
-                               </div>
-                                <span class="shop-account">Already have an account ?<a href="login.php">Log
-                                        In</a></span>
+                                <input type="submit" name="update" class="shop-btn" value="Update User">
                             </div>
                         </div>
                         </form>

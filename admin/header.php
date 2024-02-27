@@ -35,6 +35,9 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="logout.php" class="nav-link">Logout</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
@@ -225,6 +228,25 @@
                 <a href="view-subcategory.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Subcategory</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+               User Details
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a href="view-user.php" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View User</p>
                 </a>
               </li>
 

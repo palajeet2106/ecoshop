@@ -10,7 +10,7 @@
                 <span><a href="#">Seller Application</a></span>
             </div>
             <div class="blog-heading about-heading">
-                <h1 class="heading">Become A Seller!</h1>
+                <h1 class="heading">Become A User!</h1>
             </div>
         </div>
     </section>
@@ -25,7 +25,7 @@
                         <div class="row gy-5">
                             <div class="col-lg-12">
                                 <div class="seller-information" data-aos="fade-right">
-                                    <h5 class="comment-title">Seller Information</h5>
+                                    <h5 class="comment-title">User Information</h5>
                                     <p class="paragraph">Fill the form below or write us We will help you as soon as
                                         possible</p>
                                     <div class="review-form">

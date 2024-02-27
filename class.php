@@ -1,7 +1,6 @@
   <?php
 
-class connection
-{
+class connection{
   function __construct()
   {
     $this->conn = mysqli_connect("localhost", "root", "", "ecomproject");
@@ -45,6 +44,11 @@ class connection
   function ProductsDetails()
   {
     $sql = "SELECT * FROM product limit 8";
+    return mysqli_query($this->conn, $sql);
+  }
+  function popularSales()
+  {
+    $sql = "SELECT * FROM product limit 9";
     return mysqli_query($this->conn, $sql);
   }
 
@@ -118,7 +122,40 @@ class connection
     return $res;
   }
 
+  function createUser(){
+    $sql = "INSERT INTO `user`(`username`,`firstName`, `lastName`, `email`, `contact`, `password`) VALUES ('".$_POST['username']."','".$_POST['firstName']."','".$_POST['lastName']."','".$_POST['email']."','".$_POST['contact']."','".md5($_POST['password'])."')";
+    $res = mysqli_query($this ->conn , $sql);
+    return $res;
+  }
 
+  function displayUser(){
+    $sql = "SELECT * FROM user";
+    $res = mysqli_query($this ->conn , $sql);
+    return $res;
+  }
+
+  function deleteUser($id){
+    $sql = "DELETE FROM user WHERE id = '$id'";
+    $res = mysqli_query($this->conn , $sql);
+    return $res;
+  }
+
+
+  function editUser($id){
+    $sql = "SELECT * FROM user WHERE id ='$id'";
+    $res = mysqli_query($this ->conn , $sql);
+    $row = mysqli_fetch_assoc($res);
+    return $row;
+    
+  }
+  function updateUser($id){
+    $sql = "UPDATE `user` SET `username`='".$_POST['username']."',`firstName`='".$_POST['firstName']."',`lastName`='".$_POST['lastName']."',`email`='".$_POST['email']."',`contact`='".$_POST['contact']."',`password`='".md5($_POST['password'])."' WHERE id = '$id'";
+    $res = mysqli_query($this ->conn , $sql);
+    return $res;
+
+  }
+
+  
 
 
 }

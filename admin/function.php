@@ -137,8 +137,38 @@ if(isset($_REQUEST['id']) && isset($_REQUEST['cmd']) && $_REQUEST['cmd']=="delet
   }
 }
 
+if(isset($_REQUEST['id']) && isset($_REQUEST['cmd']) && $_REQUEST['cmd'] == 'delete'){
+  $id = $_REQUEST['id'];
+  if($res = $db ->deleteUser($id)){
+      ?>
+      <script>
+          alert("Record Deleted");
+          window.location.href = "view-user.php";
+      </script>
+      <?php
+  }
 
+}
+if(isset($_POST['update'])){
+  if($res = $db ->updateUser($_POST['userId'])){
+      ?>
+      <script>
+          alert("Record Updated");
+          window.location.href = "view-user.php";
+      </script>
+      <?php
+  }
+}
 
+if(isset($_POST['login'])){
+  if($res = $db ->adminLogin()){
+    ?>
+    <script>
+      window.location.href = "index.php";
+    </script>
+    <?php
+  }
+}
 
 
 

@@ -37,7 +37,7 @@
                                 <div class="login-btn text-center">
                                     <a href="#" class="shop-btn">Log In</a>
                                     <span class="shop-account">Dont't have an account ?<a
-                                            href="create-account.html">Sign Up
+                                            href="create-account.php">Sign Up
                                             Free</a></span>
                                 </div>
                             </div>

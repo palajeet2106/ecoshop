@@ -124,7 +124,8 @@ class connection
     }
 
     $sql = "INSERT INTO `product`(`productCode`, `productName`, `productTitle`, `productSlug`, `productPrice`, `productStock`, `category`, `subcategory`, `featuredPhoto`, `variationPhoto`, `description`, `productStatus`) VALUES ('" . $_POST['productcode'] . "', '" . $_POST['productname'] . "', '" . $_POST['producttitle'] . "', '" . $_POST['slug'] . "', '" . $_POST['productprice'] . "', '" . $_POST['stock'] . "', '" . $_POST['category'] . "', '" . $_POST['subcategory'] . "', '$path', '$filesstr', '" . $_POST['description'] . "', '" . $_POST['status'] . "')";
-    return mysqli_query($this->conn, $sql);
+    $res =  mysqli_query($this->conn, $sql);
+    return $res;
   }
 
   function viewProducts()
@@ -240,6 +241,41 @@ class connection
 
       }
     }
+  }
+  function displayUser(){
+    $sql = "SELECT * FROM user";
+    $res = mysqli_query($this ->conn , $sql);
+    return $res;
+  }
+
+  function deleteUser($id){
+    $sql = "DELETE FROM user WHERE id = '$id'";
+    $res = mysqli_query($this->conn , $sql);
+    return $res;
+  }
+
+
+  function editUser($id){
+    $sql = "SELECT * FROM user WHERE id ='$id'";
+    $res = mysqli_query($this ->conn , $sql);
+    $row = mysqli_fetch_assoc($res);
+    return $row;
+
+  }
+  function updateUser($id){
+    $sql = "UPDATE `user` SET `username`='".$_POST['username']."',`firstName`='".$_POST['firstName']."',`lastName`='".$_POST['lastName']."',`email`='".$_POST['email']."',`contact`='".$_POST['contact']."',`password`='".md5($_POST['password'])."' WHERE id = '$id'";
+    $res = mysqli_query($this ->conn , $sql);
+    return $res;
+
+  }
+
+  function adminLogin(){
+    $username = $_POST['username'];
+    $password = md5($_POST['password']);
+    $sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password'";
+    $res = mysqli_query($this ->conn , $sql);
+    return $res;
+
   }
 
 
