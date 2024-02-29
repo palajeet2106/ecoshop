@@ -1,4 +1,6 @@
-<?php include("header.php"); ?>
+<?php 
+include("class.php");
+include("header.php"); ?>
     <!--------------- header-section-end --------------->
 
     <!--------------- blog-tittle-section---------------->
@@ -250,7 +252,7 @@
                             aria-labelledby="v-pills-home-tab" tabindex="0">
                             <div class="user-profile">
                                 <div class="user-title">
-                                    <p class="paragraph">Hello, Sajjad</p>
+                                    <p class="paragraph"><?php echo "Hi ". $_SESSION['username']; ?></p>
                                     <h5 class="heading">Welcome to your Profile </h5>
                                 </div>
                                 <div class="profile-section">

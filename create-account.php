@@ -1,6 +1,7 @@
 <?php 
-include("header.php");
 include("class.php");
+include("header.php");
+
  ?>
     <!--------------- header-section-end --------------->
 
@@ -65,14 +66,7 @@ include("class.php");
                             <div class="login-btn text-center">
                                 <!-- <a href="#" class="shop-btn">Create an Account</a> -->
                                 <input type="submit" name="submit" class="shop-btn" value="Create an Account">
-                               <div>
-                                <?php
-                                $res = $db ->displayUser();
-                                $row = mysqli_fetch_assoc($res);
-
-                                ?>
-                               <a href="update-user.php?id=<?php echo $row['id']; ?>&cmd=updateUser" class = "btn btn-warning form-control">edit</a><br>
-                               </div>
+                               
                                 <span class="shop-account">Already have an account ?<a href="login.php">Log
                                         In</a></span>
                             </div>

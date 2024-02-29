@@ -14,13 +14,16 @@
                                     <img src="assets/images/homepage-one/vector-line.png" alt="img">
                                 </div>
                                 <div class="review-inner-form ">
+                                    
+                                <form method="POST" action="function.php">
+
                                     <div class="review-form-name">
                                         <label for="email" class="form-label">Email Address**</label>
-                                        <input type="email" id="email" class="form-control" placeholder="Email">
+                                        <input type="email" name="email" id="email" class="form-control" placeholder="Email">
                                     </div>
                                     <div class="review-form-name">
                                         <label for="password" class="form-label">Password*</label>
-                                        <input type="password" id="password" class="form-control"
+                                        <input type="password" name="password" id="password" class="form-control"
                                             placeholder="password">
                                     </div>
                                     <div class="review-form-name checkbox">
@@ -35,7 +38,7 @@
                                     </div>
                                 </div>
                                 <div class="login-btn text-center">
-                                    <a href="#" class="shop-btn">Log In</a>
+                                    <button type="submit" name="btnlogin" class="shop-btn">Log In</button>
                                     <span class="shop-account">Dont't have an account ?<a
                                             href="create-account.php">Sign Up
                                             Free</a></span>

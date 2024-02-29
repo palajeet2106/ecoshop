@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 
@@ -34,8 +35,9 @@
 
 </head>
 
-<body>
 
+
+<body>
 
     <!--------------- header-section --------------->
     <header id="header" class="header">
@@ -388,7 +390,7 @@
                     <div class="category-dropdown">
                         <ul class="category-list">
                             <li class="category-list-item">
-                                <a href="product-sidebar.php">
+                                <a href="category.php">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -419,7 +421,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.php">
+                                <a href="category.php">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -450,7 +452,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.php">
+                                <a href="category.php">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -482,7 +484,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.php">
+                                <a href="category.php">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -513,7 +515,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.php">
+                                <a href="category.php">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -544,7 +546,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.php">
+                                <a href="category.php">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -575,7 +577,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.php">
+                                <a href="category.php">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -607,7 +609,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.php">
+                                <a href="category.php">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -638,7 +640,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.php">
+                                <a href="category.php">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -670,7 +672,7 @@
                                 </a>
                             </li>
                             <li class="category-list-item">
-                                <a href="product-sidebar.php">
+                                <a href="category.php">
                                     <div class="dropdown-item d-flex justify-content-between align-items-center">
                                         <div class="dropdown-list-item d-flex">
                                             <span class="dropdown-img">
@@ -737,7 +739,7 @@
                             <div class="category-dropdown position-absolute" id="subMenu">
                                 <ul class="category-list">
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.php">
+                                        <a href="category.php">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -771,7 +773,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.php">
+                                        <a href="category.php">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -805,7 +807,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.php">
+                                        <a href="category.php">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -840,7 +842,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.php">
+                                        <a href="category.php">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -874,7 +876,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.php">
+                                        <a href="category.php">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -908,7 +910,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.php">
+                                        <a href="category.php">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -942,7 +944,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.php">
+                                        <a href="category.php">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -976,7 +978,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.php">
+                                        <a href="category.php">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -1010,7 +1012,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.php">
+                                        <a href="category.php">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -1045,7 +1047,7 @@
                                         </a>
                                     </li>
                                     <li class="category-list-item">
-                                        <a href="product-sidebar.php">
+                                        <a href="category.php">
                                             <div
                                                 class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="dropdown-list-item d-flex">
@@ -1089,7 +1091,7 @@
                                     </a>
                                 </li>
                                 <li class="mega-menu">
-                                    <a href="product-sidebar.php">
+                                    <a href="category.php">
                                         <span class="list-text">Shop</span>
                                         <span>
                                             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
@@ -1112,25 +1114,25 @@
                                             <div class="menu-list">
                                                 <h5 class="menu-title">Dresses</h5>
                                                 <ul>
-                                                    <li><a href="product-sidebar.php">Shirt</a></li>
-                                                    <li><a href="product-sidebar.php">Skart</a></li>
-                                                    <li><a href="product-sidebar.php"> T-Shirt</a></li>
+                                                    <li><a href="category.php">Shirt</a></li>
+                                                    <li><a href="category.php">Skart</a></li>
+                                                    <li><a href="category.php"> T-Shirt</a></li>
                                                 </ul>
                                             </div>
                                             <div class="menu-list">
                                                 <h5 class="menu-title">Bags</h5>
                                                 <ul>
-                                                    <li><a href="product-sidebar.php">HandBags</a></li>
-                                                    <li><a href="product-sidebar.php">Mobile Bags</a></li>
-                                                    <li><a href="product-sidebar.php">School Bags</a></li>
+                                                    <li><a href="category.php">HandBags</a></li>
+                                                    <li><a href="category.php">Mobile Bags</a></li>
+                                                    <li><a href="category.php">School Bags</a></li>
                                                 </ul>
                                             </div>
                                             <div class="menu-list">
                                                 <h5 class="menu-title">Cosmetics</h5>
                                                 <ul>
-                                                    <li><a href="product-sidebar.php">Liptics</a></li>
-                                                    <li><a href="product-sidebar.php">Foundation</a></li>
-                                                    <li><a href="product-sidebar.php"> Eye Liner</a></li>
+                                                    <li><a href="category.php">Liptics</a></li>
+                                                    <li><a href="category.php">Foundation</a></li>
+                                                    <li><a href="category.php"> Eye Liner</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -1163,8 +1165,8 @@
                                         <li><a href="privacy.php">Privacy Policy</a></li>
                                         <li><a href="terms.php">Terms & Condition</a></li>
                                         <li><a href="faq.php">FAQ</a></li>
-                                        <li><a href="product-sidebar.php">Shop Category Icon</a></li>
-                                        <li><a href="product-sidebar.php">Shop List View</a></li>
+                                        <li><a href="category.php">Shop Category Icon</a></li>
+                                        <li><a href="category.php">Shop List View</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -1193,9 +1195,18 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="become-vendor.php" class="shop-btn">
-                        User Login
+                    <a href="<?php echo (isset($_SESSION['userid'])? "user-profile.php" : "login.php");?>" class="shop-btn">
+                        <?php   
+                        echo (isset($_SESSION['userid'])? $_SESSION['username'] : 'User Login'); ?>
                     </a>
+                    <?php
+                        if(isset($_SESSION['userid'])){?>
+                        <a href="logout.php" class="shop-btn">LogOut
+                        </a>
+                        <?php }
+
+                    ?>
+                   
                 </div>
             </div>
         </div>

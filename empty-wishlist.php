@@ -15,7 +15,7 @@
                 </div>
                 <div class="cart-content">
                     <p class="content-title">Empty! You don’t Cart any Products </p>
-                    <a href="product-sidebar.php" class="shop-btn">Back to Shop</a>
+                    <a href="category.php" class="shop-btn">Back to Shop</a>
                 </div>
             </div>
         </div>

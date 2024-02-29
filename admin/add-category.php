@@ -32,6 +32,7 @@
                 <div class="form-group">
                   <input type="text" name="category" class="form-control"placeholder="Type Category" required>
                 </div>
+                
 
                 <div class="form-group">
                   Upload Featured Photo :

@@ -1,5 +1,6 @@
 <!--------------- header-section --------------->
 <?php
+include("class.php");
  include("header.php");
 
  ?>
@@ -11,7 +12,7 @@
             <div class="blog-bradcrum">
                 <span><a href="index.php">Home</a></span>
                 <span class="devider">/</span>
-                <span><a href="product-sidebar.php">Shop</a></span>
+                <span><a href="category.php">Shop</a></span>
                 <span class="devider">/</span>
                 <span><a href="#">Product Details</a></span>
             </div>
@@ -25,7 +26,7 @@
                                 </div> -->
                                 <div class="swiper-wrapper">
                                     <?php
-                                    include("class.php");
+                                    
                                     $res = $db -> viewProducts($_REQUEST['id']);
                                     $data= mysqli_fetch_assoc($res);
                                     ?>
@@ -55,7 +56,7 @@
                             <?php 
                             
                             $category= $db->editCategory($data['category']);
-                      $categoryname= mysqli_fetch_assoc($category);
+                            $categoryname= mysqli_fetch_assoc($category);
                       echo isset($categoryname['name'])? $categoryname['name']: '';?>
                             </span>
                             <h3 class="wrapper-heading"><?php echo $data['productName'];?>

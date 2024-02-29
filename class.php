@@ -4,9 +4,7 @@ class connection{
   function __construct()
   {
     $this->conn = mysqli_connect("localhost", "root", "", "ecomproject");
-    // if($this->conn){
-    //   echo "Connected";
-    // }
+    session_start();
   }
 
   
@@ -131,7 +129,8 @@ class connection{
   function displayUser(){
     $sql = "SELECT * FROM user";
     $res = mysqli_query($this ->conn , $sql);
-    return $res;
+    $row = mysqli_fetch_assoc($res);
+    return $row;
   }
 
   function deleteUser($id){
@@ -154,6 +153,77 @@ class connection{
     return $res;
 
   }
+
+  function login(){
+    $email=mysqli_real_escape_string($this->conn, stripcslashes($_POST['email']));
+    $password=mysqli_real_escape_string($this->conn, md5(stripcslashes($_POST['password'])));
+    $sql= "SELECT * FROM user WHERE email='$email' and password='$password'";
+    $res= mysqli_query($this->conn, $sql);
+    if(mysqli_num_rows($res)==1){
+      $row= mysqli_fetch_assoc($res);
+      $_SESSION['userid']= $row['id'];
+      $_SESSION['username']= $row['firstName'];
+
+      return $row['id'];
+    }else{
+      return 0;
+    }
+  }
+
+  function addCart(){
+    $userid= $_SESSION['userid'];
+    if($this->getCart($userid)){
+       $sql= "SELECT id FROM cart WHERE userid='$userid'";
+       $res= mysqli_query($this->conn, $sql);
+       $row= mysqli_fetch_assoc($res);
+       $cartid= $row['id'];
+    }else{
+      $sql= "INSERT INTO cart(userid) VALUES ('$userid')";
+       if(mysqli_query($this->conn, $sql)){
+          $cartid= $this->conn->insert_id;
+       }
+    }
+      $qty=1;
+      $pid= $_POST['pid'];
+      
+      return $this->cartItems($cartid, $userid, $qty, $pid);
+
+    
+  }
+
+  function getCart($userid){
+    $sql= "SELECT * FROM cart WHERE userid='$userid'";
+    $res= mysqli_query($this->conn, $sql);
+    if(mysqli_num_rows($res)==1){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+
+  function cartItems($cartid, $userid, $qty, $pid){
+    $sql= "INSERT INTO `cart_items`(`cartid`, `userid`, `productid`, `qty`) VALUES ('$cartid', '$userid', '$pid', '$qty')";
+    return mysqli_query($this->conn, $sql);
+
+  }
+
+  function displayCart(){
+    $userid= $_SESSION['userid'];
+    $sql= "SELECT * FROM cart_items WHERE userid='$userid'";
+    $res= mysqli_query($this->conn, $sql);
+    return $res;
+
+  }
+
+  function deleteCartItem($id){
+    $sql = "DELETE FROM cart_items WHERE id = '$id'";
+    $res = mysqli_query($this ->conn , $sql);
+    return $res;
+
+  }
+
+
 
   
 

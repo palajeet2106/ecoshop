@@ -37,5 +37,51 @@ if(isset($_POST['update'])){
 
 }
 
+if(isset($_POST['btnlogin'])){
+    $id= $db->login();
+    if($id>0){
+        ?>
+            <script>
+                window.location.href="index.php";
+            </script>
+
+    <?php
+    }else{
+        ?>
+            <script>
+                alert("Invalid Username Or Password");
+                window.location.href="login.php"
+            </script>
+        <?php
+    }
+}
+
+
+if(isset($_POST['btnaddcart'])){
+    if($db->addCart()){
+        ?>
+            <script>
+                alert("Item Added To Cart");
+                window.location.href="cart.php";
+            </script>
+        <?php
+    }
+}
+
+if(isset($_REQUEST['id']) && isset($_REQUEST['cmd']) && $_REQUEST['cmd'] == 'cartDelete'){
+    $id = $_REQUEST['id'];
+    if($res = $db ->deleteCartItem($id)){
+        ?>
+        <script>
+            confirm("Are You sure to delete this item");
+            window.location.href = "cart.php";
+        </script>
+        <?php
+
+
+    }
+
+   
+}
 
 ?>

@@ -1,4 +1,6 @@
-<?php include "header.php"; ?>
+<?php 
+ include("class.php");
+include "header.php"; ?>
 <!--------------- hero-section --------------->
 <!-- Carousel -->
 
@@ -156,21 +158,21 @@
     <div class="container">
         <div class="section-title">
             <h3>Market Category</h3>
-            <a href="product-sidebar.php" class="view">View All</a>
+            <a href="category.php" class="view">View All</a>
         </div>
         <div class="category-section">
             <?php
-            include("class.php");
+           
             $res = $db->viewCategory();
             if (mysqli_num_rows($res) > 0) {
                 while ($row = mysqli_fetch_assoc($res)) {
             ?>
                     <div class="product-wrapper" data-aos="fade-right" data-aos-duration="100">
                         <div class="wrapper-img">
-                            <a href="product-sidebar.php?id=<?php echo $row['id']; ?>"><img src="admin/<?php echo $row['pic']; ?>" alt="img"></a>
+                            <a href="category.php?id=<?php echo $row['id']; ?>"><img src="admin/<?php echo $row['pic']; ?>" alt="img"></a>
                         </div>
                         <div class="wrapper-info">
-                            <a href="product-sidebar.php" class="wrapper-details"><?php echo $row['name'] ?></a>
+                            <a href="category.php?id=<?php echo $row['id']; ?>" class="wrapper-details"><?php echo $row['name'] ?></a>
                         </div>
                     </div>
             <?php
@@ -190,7 +192,7 @@
                             <h2 class="wrapper-details">Healthy & Goods
                                 <br> Fruits
                             </h2>
-                            <a href="product-sidebar.php" class="shop-btn">Shop Now
+                            <a href="category.php" class="shop-btn">Shop Now
                                 <span>
                                     <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <rect x="1.45312" y="0.914062" width="9.25346" height="2.05632" transform="rotate(45 1.45312 0.914062)" />
@@ -215,7 +217,7 @@
                                 Frash & Goods
                                 <br>Vegetable
                             </h2>
-                            <a href="product-sidebar.php" class="shop-btn">Shop Now
+                            <a href="category.php" class="shop-btn">Shop Now
                                 <span>
                                     <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <rect x="1.45312" y="0.914062" width="9.25346" height="2.05632" transform="rotate(45 1.45312 0.914062)" />
@@ -234,7 +236,7 @@
                                 Best Fruits
                                 <br> Juices
                             </h4>
-                            <a href="product-sidebar.php" class="shop-btn">Shop Now
+                            <a href="category.php" class="shop-btn">Shop Now
                                 <span>
                                     <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <rect x="1.45312" y="0.914062" width="9.25346" height="2.05632" transform="rotate(45 1.45312 0.914062)" />
@@ -259,7 +261,7 @@
     <div class="container">
         <div class="section-title">
             <h3>Fashion</h3>
-            <a href="product-sidebar.php" class="view">View All</a>
+            <a href="category.php" class="view">View All</a>
         </div>
         <div class="fresh-section">
             <div class="row g-5">
@@ -275,7 +277,7 @@
                                 </div>
                                 <div class="product-info">
                                     <div class="product-description">
-                                        <a href="product-info.php?id=<?php echo $row['id']; ?>" class="product-details"><?php echo $row['productName'] ?>
+                                        <a href="product-info.php?id=<?php echo $row['id']; ?>" class="product-details" style="font-size: 17px !important;"><?php echo $row['productName'] ?>
                                         </a>
                                         <div class="price">
                                             <span class="price-cut">$12.99</span>
@@ -283,10 +285,15 @@
                                         </div>
                                     </div>
                                     <div class="product-cart-btn">
-                                        <a href="cart.php" class="product-btn">
+
+                                    <form method="post" action="function.php">
+                                       <input type="hidden" name="pid" value="<?php echo $row['id'];?>">
+                                
+                                      <button type="submit" name="btnaddcart" class="product-btn">
                                             
                                             <span class="btn-text">Add To Cart</span>
-                                        </a>
+                                        </button>
+                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -308,7 +315,7 @@
     <div class="container">
         <div class="section-title">
             <h3>Electronics</h3>
-            <a href="product-sidebar.php" class="view">View All</a>
+            <a href="category.php" class="view">View All</a>
         </div>
         <div class="fresh-section">
             <div class="row g-5">
@@ -325,7 +332,7 @@
                                 </div>
                                 <div class="product-info">
                                     <div class="product-description">
-                                        <a href="product-info.php?id=<?php echo $row['id']; ?>" class="product-details"><?php echo $row['productName'] ?>
+                                        <a href="product-info.php?id=<?php echo $row['id']; ?>" class="product-details" style="font-size: 17px !important;"><?php echo $row['productName'] ?>
                                         </a>
                                         <div class="price">
                                             <span class="price-cut">$12.99</span>
@@ -333,10 +340,14 @@
                                         </div>
                                     </div>
                                     <div class="product-cart-btn">
-                                        <a href="cart.php" class="product-btn">
+                                    <form method="post" action="function.php">
+                                       <input type="hidden" name="pid" value="<?php echo $row['id'];?>">
+                                
+                                      <button type="submit" name="btnaddcart" class="product-btn">
                                             
                                             <span class="btn-text">Add To Cart</span>
-                                        </a>
+                                        </button>
+                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -381,7 +392,7 @@
                     shaped sofa
                     for sale.
                 </p>
-                <a href="product-sidebar.php" class="shop-btn">Shop Now
+                <a href="category.php" class="shop-btn">Shop Now
                     <span>
                         <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="1.45312" y="0.914062" width="9.25346" height="2.05632" transform="rotate(45 1.45312 0.914062)" />
@@ -407,7 +418,7 @@
     <div class="container">
         <div class="section-title">
             <h3>Vegetables</h3>
-            <a href="product-sidebar.php" class="view">View All</a>
+            <a href="category.php" class="view">View All</a>
         </div>
         <div class="fresh-section">
             <div class="row g-5">
@@ -424,7 +435,7 @@
                                 <div class="product-info">
                                     
                                     <div class="product-description">
-                                        <a href="product-info.php?id=<?php echo $row['id']; ?>" class="product-details"><?php echo $row['productName'] ?>
+                                        <a href="product-info.php?id=<?php echo $row['id']; ?>" class="product-details" style="font-size: 17px !important;"><?php echo $row['productName'] ?>
                                         </a>
                                         <div class="price">
                                             <span class="price-cut">$12.99</span>
@@ -432,10 +443,14 @@
                                         </div>
                                     </div>
                                     <div class="product-cart-btn">
-                                        <a href="cart.php" class="product-btn">
+                                    <form method="post" action="function.php">
+                                       <input type="hidden" name="pid" value="<?php echo $row['id'];?>">
+                                
+                                      <button type="submit" name="btnaddcart" class="product-btn">
                                             
                                             <span class="btn-text">Add To Cart</span>
-                                        </a>
+                                        </button>
+                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -456,7 +471,7 @@
     <div class="container">
         <div class="section-title">
             <h3>Drinks Juice</h3>
-            <a href="product-sidebar.php" class="view">View All</a>
+            <a href="category.php" class="view">View All</a>
         </div>
         <div class="juice-product-section">
             <div class="row g-5">
@@ -473,7 +488,7 @@
                                 <div class="product-info">
                                    
                                     <div class="product-description">
-                                        <a href="product-info.php?id=<?php echo $row['id']; ?>" class="product-details"><?php echo $row['productName']; ?>
+                                        <a href="product-info.php?id=<?php echo $row['id']; ?>" class="product-details" style="font-size: 17px !important;"><?php echo $row['productName']; ?>
                                         </a>
                                         <div class="price">
                                             <span class="price-cut">$12.99</span>
@@ -481,10 +496,14 @@
                                         </div>
                                     </div>
                                     <div class="product-cart-btn">
-                                        <a href="cart.php" class="product-btn">
+                                    <form method="post" action="function.php">
+                                       <input type="hidden" name="pid" value="<?php echo $row['id'];?>">
+                                
+                                      <button type="submit" name="btnaddcart" class="product-btn">
                                             
                                             <span class="btn-text">Add To Cart</span>
-                                        </a>
+                                        </button>
+                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -511,7 +530,7 @@
                     <p class="wrapper-details">You get into the 2k+ best Products in Flash offer with as into the
                         find to <br> makein shaped sofa for sale.
                     </p>
-                    <a href="product-sidebar.php" class="shop-btn">Shop Now
+                    <a href="category.php" class="shop-btn">Shop Now
                         <span>
                             <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="1.45312" y="0.914062" width="9.25346" height="2.05632" transform="rotate(45 1.45312 0.914062)" />
@@ -533,7 +552,7 @@
     <div class="container">
         <div class="section-title">
             <h3>Laptop</h3>
-            <a href="product-sidebar.php" class="view">View All</a>
+            <a href="category.php" class="view">View All</a>
         </div>
         <div class="fresh-section">
             <div class="row g-5">
@@ -549,7 +568,7 @@
                                 </div>
                                 <div class="product-info">
                                     <div class="product-description">
-                                        <a href="product-info.php?id=<?php echo $row['id']; ?>" class="product-details"><?php echo $row['productName'] ?>
+                                        <a href="product-info.php?id=<?php echo $row['id']; ?>" class="product-details" style="font-size: 17px !important;"><?php echo $row['productName'] ?>
                                         </a>
                                         <div class="price">
                                             <span class="price-cut">$12.99</span>
@@ -557,10 +576,14 @@
                                         </div>
                                     </div>
                                     <div class="product-cart-btn">
-                                        <a href="cart.php" class="product-btn">
+                                    <form method="post" action="function.php">
+                                       <input type="hidden" name="pid" value="<?php echo $row['id'];?>">
+                                
+                                      <button type="submit" name="btnaddcart" class="product-btn">
                                             
                                             <span class="btn-text">Add To Cart</span>
-                                        </a>
+                                        </button>
+                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -582,7 +605,7 @@
     <div class="container">
         <div class="section-title">
             <h3>New Arrivals</h3>
-            <a href="product-sidebar.php" class="view">View All</a>
+            <a href="category.php" class="view">View All</a>
         </div>
         <div class="arrival-section">
             <div class="row g-5">
@@ -601,7 +624,7 @@
                         <div class="product-info">
                            
                             <div class="product-description">
-                                <a href="product-info.php?id=<?php echo $row['id']; ?>" class="product-details"><?php echo $row['productName']; ?>
+                                <a href="product-info.php?id=<?php echo $row['id']; ?>" class="product-details" style="font-size: 17px !important;"><?php echo $row['productName']; ?>
                                 </a>
                                 <div class="price">
                                     <span class="price-cut">$12.99</span>
@@ -609,10 +632,14 @@
                                 </div>
                             </div>
                             <div class="product-cart-btn">
-                                <a href="cart.php" class="product-btn">
-                                    
-                                    <span class="btn-text">Add To Cart</span>
-                                </a>
+                            <form method="post" action="function.php">
+                                       <input type="hidden" name="pid" value="<?php echo $row['id'];?>">
+                                
+                                      <button type="submit" name="btnaddcart" class="product-btn">
+                                            
+                                            <span class="btn-text">Add To Cart</span>
+                                        </button>
+                                    </form>
                             </div>
                         </div>
                     </div>
@@ -634,7 +661,7 @@
     <div class="container">
         <div class="section-title">
             <h3>Popular Sales</h3>
-            <a href="product-sidebar.php" class="view">View All</a>
+            <a href="category.php" class="view">View All</a>
         </div>
         <div class="popular-sale-section">
             <div class="row g-5">
@@ -650,7 +677,7 @@
                         </div>
                         <div class="product-info">
                             <div class="product-description" >
-                                <a href="product-info.php?id=<?php echo $row['id']; ?>"  class="product-details"><?php echo $row['productName']; ?>
+                                <a href="product-info.php?id=<?php echo $row['id']; ?>"  class="product-details" style="font-size: 17px !important;"><?php echo $row['productName']; ?>
                                 </a>
                                 <div class="price">
                                     <span class="price-cut">$12.99</span>
