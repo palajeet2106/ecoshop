@@ -1,7 +1,16 @@
 <!--------------- header-section --------------->
 <?php 
 include("class.php");
-$res= $db->displayCart();
+if(isset($_SESSION['userid'])){
+    $res= $db->displayCart();
+}else{
+    ?>
+        <script>
+            alert("Please Login");
+            window.location.href="login.php"
+        </script>
+    <?php
+}
 include("header.php"); 
 ?>
     <!--------------- header-section-end --------------->
@@ -78,11 +87,11 @@ include("header.php");
                             <td class="table-wrapper">
                                 <div class="table-wrapper-center">
                                     <div class="quantity">
-                                        <span class="minus">
+                                        <span id="qtyminus<?php echo $data['id'];?>">
                                             -
                                         </span>
-                                        <span class="number"><?php echo $row['qty']; ?></span>
-                                        <span class="plus">
+                                        <span id="qty<?php echo $data['id'];?>"><?php echo $row['qty']; ?></span>
+                                        <span id="qtyplus<?php echo $data['id'];?>">
                                             +
                                         </span>
                                     </div>
@@ -90,26 +99,97 @@ include("header.php");
                             </td>
                             <td class="table-wrapper wrapper-total">
                                 <div class="table-wrapper-center">
-                                    <h5 class="heading total-price">$10.00</h5>
+                                    <input type="hidden" id="price<?php echo $row['id'];?>" value="<?php echo $data['productPrice'];?>">
+                                    
+
+                                    <h5 class="heading total-price" id="tolal<?php echo $data['id'];?>">
+                                    ₹ <?php  echo $data['productPrice']*$row['qty'];?>
+                                </h5>
                                 </div>
                             </td>
                             <td class="table-wrapper">
                                 <div class="table-wrapper-center">
-                                    <span>
-                                    <a href="function.php?id=<?php echo $row['id']; ?>&cmd=cartDelete">
-                                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                                d="M9.7 0.3C9.3 -0.1 8.7 -0.1 8.3 0.3L5 3.6L1.7 0.3C1.3 -0.1 0.7 -0.1 0.3 0.3C-0.1 0.7 -0.1 1.3 0.3 1.7L3.6 5L0.3 8.3C-0.1 8.7 -0.1 9.3 0.3 9.7C0.7 10.1 1.3 10.1 1.7 9.7L5 6.4L8.3 9.7C8.7 10.1 9.3 10.1 9.7 9.7C10.1 9.3 10.1 8.7 9.7 8.3L6.4 5L9.7 1.7C10.1 1.3 10.1 0.7 9.7 0.3Z"
-                                                fill="#AAAAAA"></path>
-                                        </svg>
-                                        </a>
-                                    </span>
+                                    
+                                    <a class="btn btn-danger" href="function.php?id=<?php echo $row['id']; ?>&cmd=cartDelete">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                    
+                                    <a class="btn btn-warning  m-1" href="#" id="updatecart<?php echo $row['id'];?>"><i class=" fa fa-pencil"></i></a>
                                 </div>
                             </td>
                         </tr>
+
+                        
+                            <script>
+                                $(function(){
+
+                                    var qty= parseInt($('#qty<?php echo $data['id'];?>').text())
+                                    if(qty==1){
+                                            $('#qtyminus<?php echo $data['id'];?>').hide()
+                                    }else{
+                                            $('#qtyminus<?php echo $data['id'];?>').show()
+                                    }
+
+                                    $('#qtyplus<?php echo $data['id'];?>').click(function(){
+
+                                        qty+=1
+                                        $('#qty<?php echo $data['id'];?>').text(qty)
+                                        var price=$("#price<?php echo $row['id'];?>").val()
+                                        $("#tolal<?php echo $data['id'];?>").text('₹'+price*qty)
+
+                                        if(qty==1){
+                                                $('#qtyminus<?php echo $data['id'];?>').hide()
+                                        }else{
+                                                $('#qtyminus<?php echo $data['id'];?>').show()
+                                        }
+                                    
+                                    })
+
+                                    $('#qtyminus<?php echo $data['id'];?>').click(function(){
+                                        
+                                        qty-=1
+                                        $('#qty<?php echo $data['id'];?>').text(qty)
+                                        var price=$("#price<?php echo $row['id'];?>").val()
+                                        $("#tolal<?php echo $data['id'];?>").text('₹'+price*qty)
+
+                                        if(qty==1){
+                                            $('#qtyminus<?php echo $data['id'];?>').hide()
+                                        }else{
+                                                $('#qtyminus<?php echo $data['id'];?>').show()
+                                        }
+
+                                    })
+
+
+                                    $("#updatecart<?php echo $row['id'];?>").click(function(){
+                                    
+                                        $.ajax({
+                                            url: "function.php",
+                                            type: "POST",
+                                            data: {'qty': qty, 'item': '<?php echo $row['id'];?>', 'cmd': 'updatecart' },
+                                            success: function(res){
+                                                alert(res);
+
+                                            }
+
+                                        })
+                                    })
+
+
+
+
+
+                                })
+                            </script>
                     <?php
                 }
+            }else{
+                ?>
+
+                    <tr>
+                        <th colspan="5" class="alert alert-danger" style="font-size:17px">Cart is Empty. Please Continue Shopping...</th>
+                    </tr>
+<?php
             }
 
 ?>
@@ -129,5 +209,6 @@ include("header.php");
 
     <!--------------- footer-section--------------->
      <?php include("footer.php"); ?>
+
     <!--------------- footer-section-end--------------->
 

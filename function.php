@@ -84,4 +84,12 @@ if(isset($_REQUEST['id']) && isset($_REQUEST['cmd']) && $_REQUEST['cmd'] == 'car
    
 }
 
+if(isset($_POST['item']) && isset($_POST['qty']) && isset($_POST['cmd']) && $_POST['cmd']=="updatecart"){
+    if($db->updateCart($_POST['item'], $_POST['qty'])){
+        echo $msg= "Cart Updated";
+    }
+        
+
+}
+
 ?>

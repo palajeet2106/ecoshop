@@ -223,6 +223,12 @@ class connection{
 
   }
 
+  function updateCart($item, $qty){
+    $sql= "UPDATE cart_items SET qty='$qty' WHERE id= '$item'";
+    $res = mysqli_query($this ->conn , $sql);
+    return $res;
+  }
+
 
 
   
