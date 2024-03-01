@@ -170,7 +170,14 @@ if(isset($_POST['login'])){
   }
 }
 
+if(isset($_POST['cid']) && isset($_POST['cmd']) && $_POST['cmd'] == 'getState'){
+  $res =  $db -> state ($_POST['cid'] );
 
+}
+if(isset($_POST['sid']) && isset($_POST['cmd']) && $_POST['cmd'] == 'getCity'){
+  $res =  $db -> city ($_POST['sid']);
+
+}
 
 
 

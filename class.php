@@ -121,7 +121,12 @@ class connection{
   }
 
   function createUser(){
-    $sql = "INSERT INTO `user`(`username`,`firstName`, `lastName`, `email`, `contact`, `password`) VALUES ('".$_POST['username']."','".$_POST['firstName']."','".$_POST['lastName']."','".$_POST['email']."','".$_POST['contact']."','".md5($_POST['password'])."')";
+    $file = $_FILES['pic']['name'];
+    $folder = "media/";
+    $path = $folder.basename($file);
+    move_uploaded_file($_FILES['pic']['tmp_name'] , $path);
+
+    $sql = "INSERT INTO `user`(`username`, `firstName`, `lastName`, `email`, `contact`, `pic`, `country`, `state`, `city`, `address`, `pincode`, `password`) VALUES ('".$_POST['username']."','".$_POST['firstName']."','".$_POST['lastName']."','".$_POST['email']."','".$_POST['contact']."', '$path' , '".$_POST['country']."','".$_POST['state']."','".$_POST['city']."' ,'".$_POST['address']."' ,'".$_POST['pinCode']."' , '".md5($_POST['password'])."')";
     $res = mysqli_query($this ->conn , $sql);
     return $res;
   }
@@ -129,8 +134,8 @@ class connection{
   function displayUser(){
     $sql = "SELECT * FROM user";
     $res = mysqli_query($this ->conn , $sql);
-    $row = mysqli_fetch_assoc($res);
-    return $row;
+    // $row = mysqli_fetch_assoc($res);
+    return $res;
   }
 
   function deleteUser($id){
@@ -148,12 +153,108 @@ class connection{
     
   }
   function updateUser($id){
-    $sql = "UPDATE `user` SET `username`='".$_POST['username']."',`firstName`='".$_POST['firstName']."',`lastName`='".$_POST['lastName']."',`email`='".$_POST['email']."',`contact`='".$_POST['contact']."',`password`='".md5($_POST['password'])."' WHERE id = '$id'";
+    $file = $_FILES['pic']['name'];
+    if(!empty(basename($file))){
+      $folder = "media/";
+      $path = $folder(basename($file));
+    }else{
+      $path = $_POST['picdb'];
+    }
+  
+    move_uploaded_file($_FILES['pic']['tmp_name'] , $path);
+
+    $sql = "UPDATE `user` SET `username`='".$_POST['username']."',`firstName`='".$_POST['firstName']."',`lastName`='".$_POST['lastName']."',`email`='".$_POST['email']."',`contact`='".$_POST['contact']."',
+    `pic`='$path',`country`='".$_POST['country']."',`state`='".$_POST['state']."',`city`='".$_POST['city']."', `address`='".$_POST['address']."',`pincode`='".$_POST['pinCode']."',`password`='".md5($_POST['password'])."' WHERE id = '$id'";
     $res = mysqli_query($this ->conn , $sql);
     return $res;
-
   }
 
+  function country($cid){
+    $selected = '';
+    $sql = "SELECT * FROM countries";
+    $res = mysqli_query($this ->conn , $sql);
+    if(mysqli_num_rows($res) > 0){
+      while( $row = mysqli_fetch_assoc($res)){
+        if($cid != 0 && $row['id'] == $cid){
+          $selected = 'selected';
+        }else{
+          $selected = '';
+        }
+      ?>
+      <option value="<?php echo $row['id']; ?>" <?php echo $selected; ?>><?php echo $row['name']; ?></option>
+      <?php
+      }
+  }
+    return $res;
+  
+  }
+
+  function state($cid , $sid){
+    $sql = "SELECT * FROM states WHERE country_id = '$cid'";
+    $res = mysqli_query($this ->conn , $sql);
+    if(mysqli_num_rows($res) > 0){
+      ?>
+      <option selected disabled>--Select state--</option>
+      <?php
+      while( $row = mysqli_fetch_assoc($res)){
+        if($sid != 0 && $row['id'] == $sid){
+          $selected = 'selected';
+        }else{
+          $selected = '';
+        }
+      ?>
+      <option value="<?php echo $row['id']; ?>" <?php echo $selected; ?>><?php echo $row['name']; ?></option>
+      <?php
+      }
+  }
+    return $res;
+  
+  }
+  function city($sid , $cid){
+    $sql = "SELECT * FROM cities WHERE state_id = '$sid'";
+    $res = mysqli_query($this ->conn , $sql);
+    if(mysqli_num_rows($res) > 0){
+      ?>
+      <option selected disabled>--Select City--</option>
+      <?php
+      while( $row = mysqli_fetch_assoc($res)){
+        if($cid != 0 && $row['id'] == $cid){
+          $selected = 'selected';
+        }else{
+          $selected = '';
+        }
+      ?>
+      <option value="<?php echo $row['id']; ?>" <?php echo $selected; ?>><?php echo $row['name']; ?></option>
+      <?php
+      }
+  }
+    return $res;
+  
+  }
+
+  function displayCountry($id){
+    $sql = "SELECT * FROM countries WHERE id = '$id'";
+    $res = mysqli_query($this ->conn , $sql);
+    $row = mysqli_fetch_assoc($res);
+    return $row;
+    
+  }
+  function displayState($id){
+    $sql = "SELECT * FROM states WHERE id = '$id'";
+    $res = mysqli_query($this ->conn , $sql);
+    $row = mysqli_fetch_assoc($res);
+    return $row;
+    
+  }
+  function displayCity($id){
+    $sql = "SELECT * FROM cities WHERE id = '$id'";
+    $res = mysqli_query($this ->conn , $sql);
+    $row = mysqli_fetch_assoc($res);
+    return $row;
+    
+  }
+
+  
   function login(){
     $email=mysqli_real_escape_string($this->conn, stripcslashes($_POST['email']));
     $password=mysqli_real_escape_string($this->conn, md5(stripcslashes($_POST['password'])));

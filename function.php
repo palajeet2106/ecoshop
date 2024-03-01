@@ -92,4 +92,14 @@ if(isset($_POST['item']) && isset($_POST['qty']) && isset($_POST['cmd']) && $_PO
 
 }
 
+if(isset($_POST['cid']) && isset($_POST['cmd']) && $_POST['cmd'] == 'getState'){
+    $res =  $db -> state ($_POST['cid'] , 0);
+    
+ }
+ if(isset($_POST['sid']) && isset($_POST['cmd']) && $_POST['cmd'] == 'getCity'){
+    $res =  $db -> city ($_POST['sid'] , 0);
+    
+ }
+
+
 ?>
