@@ -372,71 +372,87 @@ include("header.php"); ?>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                       <?php
+                            $res = $db->displayUser();
+                            if (mysqli_num_rows($res)) {
+                                while ($row = mysqli_fetch_assoc($res)) {
+                                    ?>
+                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
                             aria-labelledby="v-pills-profile-tab" tabindex="0">
                             <div class="seller-application-section">
-                                <div class="row ">
+                               <form action="function.php" method="post" enctype="multipart/form-data">
+                               <div class="row ">
                                     <div class="col-lg-7">
                                         <div class=" account-section">
                                             <div class="review-form">
                                                 <div class=" account-inner-form">
                                                     <div class="review-form-name">
-                                                        <label for="firname" class="form-label">First Name*</label>
-                                                        <input type="text" id="firname" class="form-control"
-                                                            placeholder="First Name">
+                                                        <label for="firstName" class="form-label">First Name*</label>
+                                                        <input type="text" id="firstName" name="firstName" class="form-control"
+                                                            value="<?php echo $row['firstName']; ?>">
                                                     </div>
                                                     <div class="review-form-name">
-                                                        <label for="latname" class="form-label">Last Name*</label>
-                                                        <input type="text" id="latname" class="form-control"
-                                                            placeholder="Last Name">
+                                                        <label for="lastName" class="form-label">Last Name*</label>
+                                                        <input type="text" id="lastName" name="lastName" class="form-control"
+                                                        value="<?php echo $row['lastName']; ?>">
                                                     </div>
                                                 </div>
                                                 <div class=" account-inner-form">
                                                     <div class="review-form-name">
-                                                        <label for="gmail" class="form-label">Email*</label>
-                                                        <input type="email" id="gmail" class="form-control"
-                                                            placeholder="user@gmail.com">
+                                                        <label for="email" class="form-label">Email*</label>
+                                                        <input type="email" id="email" name="email" class="form-control"
+                                                        value="<?php echo $row['email']; ?>">
                                                     </div>
                                                     <div class="review-form-name">
-                                                        <label for="telephone" class="form-label">Phone*</label>
-                                                        <input type="tel" id="telephone" class="form-control"
-                                                            placeholder="+880388**0899">
+                                                        <label for="username" class="form-label">Username*</label>
+                                                        <input type="text" id="username" name="username" class="form-control"
+                                                        value="<?php echo $row['username']; ?>">
                                                     </div>
                                                 </div>
-                                                <div class="review-form-name">
-                                                    <label for="region" class="form-label">Country*</label>
-                                                    <select id="region" class="form-select">
-                                                        <option>Choose...</option>
-                                                        <option>Bangladesh</option>
-                                                        <option>United States</option>
-                                                        <option>United Kingdom</option>
-                                                    </select>
+                                                <div class=" account-inner-form">
+                                                    <div class="review-form-name">
+                                                        <label for="contact" class="form-label">Phone*</label>
+                                                        <input type="number" id="contact" name="contact" class="form-control"
+                                                        value="<?php echo $row['contact']; ?>">
+                                                    </div>
                                                 </div>
+                                                <div class="review-form-name mt-1">
+                                            <label for="country" class="form-label">Country*</label>
+                                            <select id="country" name="country" class="form-select">
+                                            <?php $res = $db ->country($row['country'])   ?>
+                                            </select>
+                                        </div>
+                                        <div class="review-form-name mt-2">
+                                            <label for="state" class="form-label">State*</label>
+                                            <select id="state" name="state" class="form-select">
+                                            <?php 
+                                            $res =  $db -> state($row['country'] , $row['state']); ?>
+                                            </select>
+                                        </div>
+                                        <div class="review-form-name mt-2 mb-2">
+                                            <label for="city" class="form-label">city*</label>
+                                            <select id="city" name="city" class="form-select">
+                                            <?php  $res = $db ->city($row['state'] , $row['city']  ) ?>
+                                            </select>
+                                        </div>
                                                 <div class="review-form-name address-form">
-                                                    <label for="addres" class="form-label">Address*</label>
-                                                    <input type="text" id="addres" class="form-control"
-                                                        placeholder="Enter your Address">
+                                                    <label for="address" class="form-label">Address*</label>
+                                                    <input type="text" id="address" name="address" class="form-control"
+                                                    value="<?php echo $row['address']; ?>">
                                                 </div>
                                                 <div class=" account-inner-form city-inner-form">
+                                                    
                                                     <div class="review-form-name">
-                                                        <label for="teritory" class="form-label">Town / City*</label>
-                                                        <select id="teritory" class="form-select">
-                                                            <option>Choose...</option>
-                                                            <option>Newyork</option>
-                                                            <option>Dhaka</option>
-                                                            <option selected>London</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="review-form-name">
-                                                        <label for="post" class="form-label">Postcode / ZIP*</label>
-                                                        <input type="number" id="post" class="form-control"
-                                                            placeholder="0000">
+                                                        <label for="pinCode" class="form-label">Postcode / ZIP*</label>
+                                                        <input type="number" id="pinCode" name="pinCode" class="form-control"
+                                                        value="<?php echo $row['pincode']; ?>">
                                                     </div>
                                                 </div>
                                                 <div class="submit-btn">
                                                     <a href="#" class="shop-btn cancel-btn">Cancel</a>
-                                                    <a href="#" class="shop-btn update-btn">Update Profile</a>
+                                                    <!-- <a href="#" class="shop-btn update-btn">Update Profile</a> -->
+                                                    <input type="hidden" name="userId" value="<?php echo $row['id']; ?>">
+                                                    <input type="submit" name="updateUser" id="updateUser" value="Update Profile" class="shop-btn update-btn">
                                                 </div>
                                             </div>
                                         </div>
@@ -473,8 +489,14 @@ include("header.php"); ?>
                                         </div>
                                     </div>
                                 </div>
+                               </form>
                             </div>
                         </div>
+                                    <?php
+                                }
+                            }
+                       ?>
+                      
 
                         <div class="tab-pane fade" id="v-pills-payment" role="tabpanel"
                             aria-labelledby="v-pills-order-tab" tabindex="0">
@@ -1778,3 +1800,29 @@ include("header.php"); ?>
 
     <!--------------- footer-section--------------->
   <?php include("footer.php"); ?>
+  <script>
+    $(function(){
+        $("#country").change(function(){
+            let cid = $("#country").val();
+            $.ajax({
+                url : "function.php",
+                method : "POST",
+                data : {cid : cid , cmd : "getState"},
+                success : function(res){
+                    $("#state").html(res);
+                }
+            })
+        })
+        $("#state").change(function(){
+            let sid = $("#state").val();
+            $.ajax({
+                url : "function.php",
+                method : "POST",
+                data : {sid : sid , cmd : "getCity"},
+                success : function(res){
+                    $("#city").html(res);
+                }
+            })
+        })
+    })
+</script>

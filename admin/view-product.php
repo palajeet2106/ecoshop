@@ -33,9 +33,6 @@
             <th>Subcategory</th>
             <th>Status</th>
             <th>Edit / Update</th>
-
-
-
           </tr>
         </thead>
 

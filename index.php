@@ -632,13 +632,13 @@ include "header.php"; ?>
                                 </div>
                             </div>
                             <div class="product-cart-btn">
-                            <form method="post" action="function.php">
-                                       <input type="hidden" name="pid" value="<?php echo $row['id'];?>">
-                                
-                                      <button type="submit" name="btnaddcart" class="product-btn">
-                                            
-                                            <span class="btn-text">Add To Cart</span>
-                                        </button>
+                                    <form method="post" action="function.php">
+                                            <input type="hidden" name="pid" value="<?php echo $row['id'];?>">
+                                        
+                                            <button type="submit" name="btnaddcart" class="product-btn">
+                                                    
+                                                    <span class="btn-text">Add To Cart</span>
+                                                </button>
                                     </form>
                             </div>
                         </div>

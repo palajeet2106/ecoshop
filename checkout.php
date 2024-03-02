@@ -28,63 +28,62 @@ include("header.php"); ?>
                     $res = $db->displayUser();
                     if (mysqli_num_rows($res)) {
                         while ($row = mysqli_fetch_assoc($res)) {
-                            $country = $db ->displayCountry($row['country']);
-                            $state = $db ->displayState($row['state']);
-                            $city = $db ->displayCity($row['city']);
-                    ?>
-                              <div class="checkout-wrapper">
+                            // $country = $db ->displayCountry($row['country']);
+                            // $state = $db ->displayState($row['state']);
+                            // $city = $db ->displayCity($row['city']);
+                     ?>
+                             <form action="function.php" method = "post">
+                             <div class="checkout-wrapper">
                                 <div class="account-section billing-section box-shadows">
                                     <h5 class="wrapper-heading">Billing Details</h5>
                                     <div class="review-form">
                                         <div class=" account-inner-form">
                                             <div class="review-form-name">
-                                                <label for="fname" class="form-label">First Name*</label>
-                                                <input type="text" id="fname" class="form-control" value="<?php echo $row['firstName']; ?>">
+                                                <label for="firstName" class="form-label">First Name*</label>
+                                                <input type="text" id="firstName" name="firstName" class="form-control" value="<?php echo $row['firstName']; ?>">
                                             </div>
                                             <div class="review-form-name">
-                                                <label for="lname" class="form-label">Last Name*</label>
-                                                <input type="text" id="lname" class="form-control" value="<?php echo $row['lastName']; ?>">
+                                                <label for="lastName" class="form-label">Last Name*</label>
+                                                <input type="text" id="lastName" name="lastName" class="form-control" value="<?php echo $row['lastName']; ?>">
                                             </div>
                                         </div>
                                         <div class=" account-inner-form">
                                             <div class="review-form-name">
                                                 <label for="email" class="form-label">Email*</label>
-                                                <input type="email" id="email" class="form-control" value="<?php echo $row['email']; ?>">
+                                                <input type="email" id="email" name="email" class="form-control" value="<?php echo $row['email']; ?>">
                                             </div>
                                             <div class="review-form-name">
-                                                <label for="phone" class="form-label">Phone*</label>
-                                                <input type="tel" id="phone" class="form-control" value="<?php echo $row['contact']; ?>">
+                                                <label for="contact" class="form-label">contact*</label>
+                                                <input type="number" id="contact" name="contact" class="form-control" value="<?php echo $row['contact']; ?>">
                                             </div>
                                         </div>
                                         <div class="review-form-name mt-1">
                                             <label for="country" class="form-label">Country*</label>
                                             <select id="country" name="country" class="form-select">
-                                            <?php $res = $db ->country($row['country']);   ?>
-                                                <option selected disabled ><?php echo $country['name']; ?></option>
+                                            <?php $res = $db ->country($row['country'])   ?>
                                             </select>
                                         </div>
                                         <div class="review-form-name mt-2">
                                             <label for="state" class="form-label">State*</label>
                                             <select id="state" name="state" class="form-select">
-                                            <?php $res =  $db -> state($row['country'] , $row['state']); ?>
-                                                <option selected disabled><?php echo $state['name']; ?></option>
+                                            <?php 
+                                            $res =  $db -> state($row['country'] , $row['state']); ?>
                                             </select>
                                         </div>
                                         <div class="review-form-name mt-2 mb-2">
                                             <label for="city" class="form-label">city*</label>
                                             <select id="city" name="city" class="form-select">
-                                            <?php $res = $db ->city($row['state'] , $row['city']  ) ?>
-                                                <option selected disabled><?php echo $city['name']; ?></option>
+                                            <?php  $res = $db ->city($row['state'] , $row['city']  ) ?>
                                             </select>
                                         </div>
                                         <div class="review-form-name address-form">
                                             <label for="address" class="form-label">Address*</label>
-                                            <input type="text" id="address" class="form-control" value="<?php echo $row['address'];  ?>">
+                                            <input type="text" id="address" name="address" class="form-control" value="<?php echo $row['address'];  ?>">
                                         </div>
                                         <div class=" account-inner-form city-inner-form">
                                             <div class="review-form-name">
-                                                <label for="number" class="form-label">Postcode / ZIP*</label>
-                                                <input type="number" id="number" class="form-control" value="<?php echo $row['pincode'] ; ?>">
+                                                <label for="pinCode" class="form-label">Postcode / ZIP*</label>
+                                                <input type="number" id="pinCode" name="pinCode" class="form-control" value="<?php echo $row['pincode'] ; ?>">
                                             </div>
                                         </div>
 
@@ -98,21 +97,13 @@ include("header.php"); ?>
                                         </div>
                                         <div class="review-form-name shipping">
                                             <h5 class="wrapper-heading">Shipping Address</h5>
-                                            <div class="checkbox-item">
-                                                <input type="checkbox" id="remember">
-                                                <label for="remember" class="form-label">
-                                                    Create an account?</label>
-                                            </div>
+                                            <!-- <input type="submit" name="update" id="update" value="edit" class = "btn btn-warning"> -->
+                                            <input type="hidden" name="userId" value="<?php echo $row['id']; ?>">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                    <?php
-                        }
-                    }
-
-
-                    ?>
+                            
 
                 </div>
                 <div class="col-lg-6">
@@ -208,11 +199,17 @@ include("header.php"); ?>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#" class="shop-btn">Place Order Now</a>
+                                <input type="submit" name="update" id="update" value="Place Order Now" class="shop-btn">
                             </div>
                         </div>
                     </div>
                 </div>
+                </form>
+                    <?php
+                        }
+                    }
+
+                    ?>
             </div>
         </div>
     </div>
@@ -221,3 +218,30 @@ include("header.php"); ?>
 
 <!--------------- footer-section--------------->
 <?php include("footer.php"); ?>
+
+<script>
+    $(function(){
+        $("#country").change(function(){
+            let cid = $("#country").val();
+            $.ajax({
+                url : "function.php",
+                method : "POST",
+                data : {cid : cid , cmd : "getState"},
+                success : function(res){
+                    $("#state").html(res);
+                }
+            })
+        })
+        $("#state").change(function(){
+            let sid = $("#state").val();
+            $.ajax({
+                url : "function.php",
+                method : "POST",
+                data : {sid : sid , cmd : "getCity"},
+                success : function(res){
+                    $("#city").html(res);
+                }
+            })
+        })
+    })
+</script>

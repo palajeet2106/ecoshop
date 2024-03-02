@@ -12,7 +12,8 @@ include("header.php");
             <div class="row align-items-center">
                 <div class="col-lg-6 col-xs-12">
                     <form action="function.php" method="post" enctype="multipart/form-data">
-                        <div class="review-form box-shadows" style="height: 1000px;">
+                        <!-- <div class="review-form box-shadows" style="height: 1000px;"> -->
+                        <div class="review-form box-shadows">
                             <div class="review-form-text">
                                 <h5 class="comment-title">Create Account</h5>
                                 <img src="assets/images/homepage-one/vector-line.png" alt="img">
@@ -42,12 +43,12 @@ include("header.php");
                                     <label for="contact" class="form-label">Contact*</label>
                                     <input type="number" name="contact" class="form-control" placeholder="Enter Contact">
                                 </div>
-                                <div class="review-form-name">
+                                <!-- <div class="review-form-name">
                                     <label for="pic" class="form-label">Photo*</label>
                                     <input type="file" name="pic" class="form-control" accept="image/*">
-                                </div>
+                                </div> -->
                             </div>
-                            <div class="review-form-name mt-1">
+                            <!-- <div class="review-form-name mt-1">
                                 <label for="country" class="form-label">Country*</label>
                                 <select id="country" name="country" class="form-select">
                                     <option selected disabled>--Select Country--</option>
@@ -77,7 +78,7 @@ include("header.php");
                                     <label for="pinCode" class="form-label">Pin Code*</label>
                                     <input type="number" name="pinCode" class="form-control" placeholder="Enter PinCode">
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class=" account-inner-form">
                                 <div class="review-form-name">

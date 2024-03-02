@@ -132,7 +132,8 @@ class connection{
   }
 
   function displayUser(){
-    $sql = "SELECT * FROM user";
+    $userId = $_SESSION['userid'];
+    $sql = "SELECT * FROM user WHERE id= '$userId'";
     $res = mysqli_query($this ->conn , $sql);
     // $row = mysqli_fetch_assoc($res);
     return $res;
@@ -154,9 +155,11 @@ class connection{
   }
   function updateUser($id){
     $file = $_FILES['pic']['name'];
-    if(!empty(basename($file))){
+  
+    if(!empty(basename($file))){ 
       $folder = "media/";
       $path = $folder(basename($file));
+ 
     }else{
       $path = $_POST['picdb'];
     }

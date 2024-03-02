@@ -1,4 +1,6 @@
-<?php include("header.php");  ?>
+<?php
+include("class.php");
+ include("header.php");  ?>
     <!--------------- header-section-end --------------->
 
     <!--------------- login-section --------------->

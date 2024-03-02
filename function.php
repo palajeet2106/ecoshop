@@ -30,7 +30,19 @@ if(isset($_POST['update'])){
     if($res = $db ->updateUser($_POST['userId'])){
         ?>
         <script>
-            alert("Record Updated");   
+            alert("Record Updated");  
+            window.location.href = "checkout.php" 
+        </script>
+        <?php
+    }
+
+}
+if(isset($_POST['updateUser'])){
+    if($res = $db ->updateUser($_POST['userId'])){
+        ?>
+        <script>
+            alert("Record Updated");  
+            window.location.href = "user-profile.php" 
         </script>
         <?php
     }
