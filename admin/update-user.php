@@ -62,7 +62,7 @@
                                     <a href=" <?php echo $row['pic']; ?>"> <?php echo $row['pic']; ?></a>
                                     <input type="file" name="pic" class="form-control" accept="image/*">
                                     <input type="hidden" name="picdb" class="form-control" value="<?php echo $row['pic']; ?>">
-                                   <img class="mt-2" src="../<?php echo $row['pic']; ?>" alt="img" height="100" width="100">
+                                   <img class="mt-2" src="<?php echo $row['pic']; ?>" alt="img" height="100" width="100">
                                 </div>
                                 <div class="review-form-name mt-3">
                                     <label for="contact" class="form-label">Contact*</label>

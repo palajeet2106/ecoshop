@@ -402,7 +402,7 @@ include "header.php"; ?>
                 </a>
             </div>
             <div class="discount-item">
-                <h3 class=discount-primary">
+                <h3 class=discount-primary>
                     <span class="discount-text">26%</span>
                     <span class="discount-inner-text">OFF</span>
                 </h3>

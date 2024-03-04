@@ -265,7 +265,7 @@ class connection
   function updateUser($id){
     $file = $_FILES['pic']['name'];
     if(!empty(basename($file))){
-      $folder = "media/";
+      $folder = "uploads/";
       $path = $folder.basename($file);
     }else{
       $path = $_POST['picdb'];

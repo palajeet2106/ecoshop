@@ -52,7 +52,7 @@
                 <?php echo $row['username']; ?>
               </td>
               <td>
-                <img src="../<?php echo $row['pic']; ?>" alt="pic" height="80" width="80">
+                <img src="<?php echo $row['pic']; ?>" alt="pic" height="80" width="80">
               </td>
               <td>
                 <?php echo $row['firstName'] ." ". $row['lastName'];  ?>

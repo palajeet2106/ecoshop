@@ -102,7 +102,7 @@ include("header.php");
                                     <input type="hidden" id="price<?php echo $row['id'];?>" value="<?php echo $data['productPrice'];?>">
                                     
 
-                                    <h5 class="heading total-price" id="tolal<?php echo $data['id'];?>">
+                                    <h5 class="heading total-price" id="total<?php echo $data['id'];?>">
                                     ₹ <?php  echo $data['productPrice']*$row['qty'];?>
                                 </h5>
                                 </div>
@@ -135,7 +135,7 @@ include("header.php");
                                         qty+=1
                                         $('#qty<?php echo $data['id'];?>').text(qty)
                                         var price=$("#price<?php echo $row['id'];?>").val()
-                                        $("#tolal<?php echo $data['id'];?>").text('₹'+price*qty)
+                                        $("#total<?php echo $data['id'];?>").text('₹'+price*qty)
 
                                         if(qty==1){
                                                 $('#qtyminus<?php echo $data['id'];?>').hide()
@@ -150,7 +150,7 @@ include("header.php");
                                         qty-=1
                                         $('#qty<?php echo $data['id'];?>').text(qty)
                                         var price=$("#price<?php echo $row['id'];?>").val()
-                                        $("#tolal<?php echo $data['id'];?>").text('₹'+price*qty)
+                                        $("#total<?php echo $data['id'];?>").text('₹'+price*qty)
 
                                         if(qty==1){
                                             $('#qtyminus<?php echo $data['id'];?>').hide()

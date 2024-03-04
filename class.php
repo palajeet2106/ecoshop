@@ -122,7 +122,7 @@ class connection{
 
   function createUser(){
     $file = $_FILES['pic']['name'];
-    $folder = "media/";
+    $folder = "uploads/";
     $path = $folder.basename($file);
     move_uploaded_file($_FILES['pic']['tmp_name'] , $path);
 
@@ -157,7 +157,7 @@ class connection{
     $file = $_FILES['pic']['name'];
   
     if(!empty(basename($file))){ 
-      $folder = "media/";
+      $folder = "uploads/";
       $path = $folder(basename($file));
  
     }else{
