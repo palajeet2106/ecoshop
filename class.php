@@ -275,22 +275,32 @@ class connection{
   }
 
   function addCart(){
-    $userid= $_SESSION['userid'];
-    if($this->getCart($userid)){
-       $sql= "SELECT id FROM cart WHERE userid='$userid'";
-       $res= mysqli_query($this->conn, $sql);
-       $row= mysqli_fetch_assoc($res);
-       $cartid= $row['id'];
-    }else{
-      $sql= "INSERT INTO cart(userid) VALUES ('$userid')";
-       if(mysqli_query($this->conn, $sql)){
-          $cartid= $this->conn->insert_id;
-       }
-    }
-      $qty=1;
-      $pid= $_POST['pid'];
-      
-      return $this->cartItems($cartid, $userid, $qty, $pid);
+    if(isset($_SESSION['userid'])){
+
+      $userid= $_SESSION['userid'];
+      if($this->getCart($userid)){
+        $sql= "SELECT id FROM cart WHERE userid='$userid'";
+        $res= mysqli_query($this->conn, $sql);
+        $row= mysqli_fetch_assoc($res);
+        $cartid= $row['id'];
+      }else{
+        $sql= "INSERT INTO cart(userid) VALUES ('$userid')";
+        if(mysqli_query($this->conn, $sql)){
+            $cartid= $this->conn->insert_id;
+        }
+      }
+        $qty=1;
+        $pid= $_POST['pid'];
+    
+        return $this->cartItems($cartid, $userid, $qty, $pid);
+  }else{
+      ?>
+        <script>
+          alert("Please Login to Use Cart");
+          window.location.href="login.php"
+        </script>
+      <?php
+  }
 
     
   }
@@ -307,8 +317,22 @@ class connection{
 
 
   function cartItems($cartid, $userid, $qty, $pid){
+
+    $sql= "SELECT * FROM cart_items WHERE productid='$pid' and cartid='$cartid'";
+    $res= mysqli_query($this->conn, $sql);
+
+    if(mysqli_num_rows($res)==1){
+      $row= mysqli_fetch_assoc($res);
+      $qty= $row['qty'];
+      $qty+=1;
+      $sql= "UPDATE cart_items SET qty='$qty' WHERE productid='$pid' and cartid='$cartid'";
+      return mysqli_query($this->conn, $sql);
+    }
+    else{
+
     $sql= "INSERT INTO `cart_items`(`cartid`, `userid`, `productid`, `qty`) VALUES ('$cartid', '$userid', '$pid', '$qty')";
     return mysqli_query($this->conn, $sql);
+    }
 
   }
 
@@ -329,6 +353,40 @@ class connection{
 
   function updateCart($item, $qty){
     $sql= "UPDATE cart_items SET qty='$qty' WHERE id= '$item'";
+    $res = mysqli_query($this ->conn , $sql);
+    return $res;
+  }
+
+  function ordersummary(){
+    $userid=$_SESSION['userid'];
+    $sql= "SELECT * FROM cart_items WHERE userid='$userid'";
+    $res= mysqli_query($this->conn, $sql);
+    return $res;
+
+  }
+
+  function sendOrder(){
+    $userid= $_SESSION['userid'];
+    $cartid= $_POST['cartid'];
+    $orderid= $_POST['orderid'];
+    $netamount= $_POST['netamount'];
+    $paymentmode= $_POST['paymentmode'];
+    $sql="INSERT INTO `bill_details`(`order_id`, `userid`, `payment_mode`, `cartid`, `totalamount`) values(
+      '$orderid', '$userid', '$paymentmode', '$cartid', '$netamount')";
+    if(mysqli_query($this->conn, $sql)){
+      return $this->deletecartafterorder($userid);
+    }
+  }
+
+  function deletecartafterorder($userid){
+    $sql= "DELETE FROM cart_items WHERE userid='$userid'";
+    return mysqli_query($this->conn, $sql);
+  }
+
+
+  function orderDetails(){
+    $userid = $_SESSION['userid'];
+    $sql = "SELECT `order_id` FROM `bill_details` WHERE id = '$userid'";
     $res = mysqli_query($this ->conn , $sql);
     return $res;
   }

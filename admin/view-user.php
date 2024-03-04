@@ -69,10 +69,13 @@
               <td>
               <?php echo $country['name']." ". $state['name']." ". $city['name']; ?>
               </td>
-              <td>
-                  <a href="function.php?id=<?php echo $row['id']; ?>&cmd=delete" class = "btn btn-danger">Delete</a>
-                  <a href="update-user.php?id=<?php echo $row['id']; ?>&cmd=updateUser" class = "btn btn-success">Edit</a>
-              </td>
+              <!-- <td>
+                  <a href="function.php?id=<?php //echo $row['id']; ?>&cmd=delete" class = "btn btn-danger">Delete</a>
+                  <a href="update-user.php?id=<?php //echo $row['id']; ?>&cmd=updateUser" class = "btn btn-success">Edit</a>
+              </td> -->
+
+              <td><?php echo ($row['status'] == 1)? 'Active' : 'Disable'; ?></td>
+
             </tr>
             <?php
           $sn++;}

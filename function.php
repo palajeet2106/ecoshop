@@ -26,14 +26,16 @@ if(isset($_REQUEST['id']) && isset($_REQUEST['cmd']) && $_REQUEST['cmd'] == 'del
     }
 
 }
-if(isset($_POST['update'])){
+if(isset($_POST['btnorder'])){
     if($res = $db ->updateUser($_POST['userId'])){
+        if($db->sendOrder()){
         ?>
         <script>
-            alert("Record Updated");  
-            window.location.href = "checkout.php" 
+            alert("Order Placed Successfully");  
+            window.location.href = "success.php" 
         </script>
         <?php
+        }
     }
 
 }
