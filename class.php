@@ -155,6 +155,11 @@ class connection{
   }
   function updateUser($id){
     $file = $_FILES['pic']['name'];
+    if(!isset($_POST['username'])){
+      $username= $_POST['email'];
+    }else{
+      $username= $_POST['username'];
+    }
   
     if(!empty(basename($file))){ 
       $folder = "uploads/";
@@ -166,8 +171,8 @@ class connection{
   
     move_uploaded_file($_FILES['pic']['tmp_name'] , $path);
 
-    $sql = "UPDATE `user` SET `username`='".$_POST['username']."',`firstName`='".$_POST['firstName']."',`lastName`='".$_POST['lastName']."',`email`='".$_POST['email']."',`contact`='".$_POST['contact']."',
-    `pic`='$path',`country`='".$_POST['country']."',`state`='".$_POST['state']."',`city`='".$_POST['city']."', `address`='".$_POST['address']."',`pincode`='".$_POST['pinCode']."',`password`='".md5($_POST['password'])."' WHERE id = '$id'";
+    $sql = "UPDATE `user` SET `username`='$username', `firstName`='".$_POST['firstName']."',`lastName`='".$_POST['lastName']."',`email`='".$_POST['email']."',`contact`='".$_POST['contact']."',
+    `pic`='$path',`country`='".$_POST['country']."',`state`='".$_POST['state']."',`city`='".$_POST['city']."', `address`='".$_POST['address']."',`pincode`='".$_POST['pinCode']."' WHERE id = '$id'";
     $res = mysqli_query($this ->conn , $sql);
     return $res;
   }
@@ -370,9 +375,13 @@ class connection{
     $cartid= $_POST['cartid'];
     $orderid= $_POST['orderid'];
     $netamount= $_POST['netamount'];
-    $paymentmode= $_POST['paymentmode'];
-    $sql="INSERT INTO `bill_details`(`order_id`, `userid`, `payment_mode`, `cartid`, `totalamount`) values(
-      '$orderid', '$userid', '$paymentmode', '$cartid', '$netamount')";
+    $paymentmode= $_POST['paymentmode']; 
+
+    $pids=$_POST['pids'];
+    $pidstring= implode(',', $pids);
+
+    $sql="INSERT INTO `bill_details`(`order_id`, `userid`, `payment_mode`, `cartid`, `product_ids`, `totalamount`) values(
+      '$orderid', '$userid', '$paymentmode', '$cartid', '$pidstring', '$netamount')";
     if(mysqli_query($this->conn, $sql)){
       return $this->deletecartafterorder($userid);
     }

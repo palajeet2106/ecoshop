@@ -248,6 +248,10 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>View User</p>
                 </a>
+                <a href="order-details.php" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Order Details</p>
+                </a>
               </li>
 
             </ul>

@@ -373,6 +373,38 @@ class connection
 
   }
 
+  function orderDetails(){
+    // $userid = $_SESSION['userid'];
+    $sql = "SELECT * FROM bill_details";
+    $res = mysqli_query($this ->conn , $sql);
+    return $res;
+  }
+
+  function countOrderItems($orderid){
+      $sql= "SELECT product_ids FROM bill_details WHERE order_id='$orderid'";
+      $res= mysqli_query($this->conn, $sql);
+      $row= mysqli_fetch_assoc($res);
+      $pids= explode(',', $row['product_ids']);
+      return count($pids);
+
+
+  }
+
+  function getOrderedItemDetails($orderid){
+    $sql= "SELECT product_ids FROM bill_details WHERE id='$orderid'";
+    $res= mysqli_query($this->conn, $sql);
+    $row= mysqli_fetch_assoc($res);
+    $pids= explode(',', $row['product_ids']);
+    $data=array();
+
+    foreach($pids as $p){
+      $sql= "SELECT * FROM product WHERE id='$p'";
+      $pro= mysqli_query($this->conn, $sql);
+      $data[]= mysqli_fetch_assoc($pro);
+    }
+    return $data;
+  }
+
 
 
 }

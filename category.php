@@ -246,10 +246,15 @@ include "header.php" ;
                                             </div>
                                         </div>
                                         <div class="product-cart-btn">
-                                            <a href="cart.php" class="product-btn">
-                                                
+                                            <!-- <a href="cart.php" class="product-btn">
                                                 <span class="btn-text">Add To Cart</span>
-                                            </a>
+                                            </a> -->
+                                     <form method="post" action="function.php">
+                                       <input type="hidden" name="pid" value="<?php echo $row['id'];?>">
+                                      <button type="submit" name="btnaddcart" class="product-btn"> 
+                                         Add To Cart
+                                        </button>
+                                    </form>
                                         </div>
                                     </div>
                                 </div>

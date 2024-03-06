@@ -392,32 +392,46 @@ include("class.php");
             </div>
             <div class="weekly-sale-section">
                 <div class="row g-5">
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <?php
+
+                    $res = $db ->getProductsByCategory($data['category']);
+                    if(mysqli_num_rows($res) > 0){
+                        while($row = mysqli_fetch_assoc($res)){
+                            ?>
+                            <div class="col-xl-3 col-lg-4 col-sm-6">
                         <div class="product-wrapper" data-aos="fade-up">
                             <div class="product-img">
-                                <img src="assets/images/homepage-one/product-img/p-img-21.webp" alt="product-img">
+                                <a href="product-info.php?id=<?php echo $row['id']; ?>"><img src="admin/<?php echo $row['featuredPhoto']; ?>" alt="product-img" style="height: 230px !important; width : 250px !important"></a>
                                 
                             </div>
                             <div class="product-info">
                                
                                 <div class="product-description">
-                                    <a href="product-info.php" class="product-details">Beef Steak
+                                    <a href="product-info.php?id=<?php echo $row['id']; ?>" class="product-details"><?php echo $row['productName'];  ?>
                                     </a>
                                     <div class="price">
-                                        <span class="price-cut">$20.99</span>
-                                        <span class="new-price">$12.99</span>
+                                        <span class="price-cut">₹ 20.99</span>
+                                        <span class="new-price"> ₹ <?php echo $row['productPrice'];  ?></span>
                                     </div>
                                 </div>
                                 <div class="product-cart-btn">
-                                    <a href="cart.php" class="product-btn">
-                                        
-                                        <span class="btn-text">Add To Cart</span>
-                                    </a>
+                                    <form method="post" action="function.php">
+                                       <input type="hidden" name="pid" value="<?php echo $row['id'];?>">
+                                      <button type="submit" name="btnaddcart" class="product-btn"> 
+                                         Add To Cart
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                            <?php
+                        }
+                    }
+
+                    ?>
+                    
+                    <!-- <div class="col-xl-3 col-lg-4 col-sm-6">
                         <div class="product-wrapper" data-aos="fade-up">
                             <div class="product-img">
                                 <img src="assets/images/homepage-one/product-img/p-img-1.webp" alt="product-img">
@@ -770,7 +784,7 @@ include("class.php");
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@ include("class.php");
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="login-form">
-                            <div class="review-form  box-shadows">
+                            <div class="review-form box-shadows" style="height: 500px;">
                                 <div class="review-form-text">
                                     <h5 class="comment-title">Log In</h5>
                                     <img src="assets/images/homepage-one/vector-line.png" alt="img">
@@ -21,12 +21,12 @@ include("class.php");
 
                                     <div class="review-form-name">
                                         <label for="email" class="form-label">Email Address**</label>
-                                        <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                                        <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
                                     </div>
                                     <div class="review-form-name">
                                         <label for="password" class="form-label">Password*</label>
                                         <input type="password" name="password" id="password" class="form-control"
-                                            placeholder="password">
+                                            placeholder="password" required>
                                     </div>
                                     <div class="review-form-name checkbox">
                                         <div class="checkbox-item">

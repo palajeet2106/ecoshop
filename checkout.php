@@ -134,6 +134,7 @@ if (mysqli_num_rows($summary) == 0) {
                                         $sum = 0;
                                         while ($smrow = mysqli_fetch_assoc($summary)) {
                                             $cartid = $smrow['cartid'];
+                                            
                                             $product = mysqli_fetch_assoc($db->viewProducts($smrow['productid']));
 
                                             $sum += $smrow['qty'] * $product['productPrice'];
@@ -152,6 +153,7 @@ if (mysqli_num_rows($summary) == 0) {
                                                     <!-- <p class="paragraph">64GB, Black, 44mm, Chain Belt</p> -->
                                                 </div>
                                                 <div class="price">
+                                                <input type="hidden" name="pids[]" value="<?php echo $smrow['productid'];?>">
                                                     <h5 class="wrapper-heading">₹ <?php echo $smrow['qty'] * $product['productPrice']; ?></h5>
                                                 </div>
                                             </li>
@@ -209,6 +211,7 @@ if (mysqli_num_rows($summary) == 0) {
 
                                 <input type="hidden" name="orderid" value="<?php echo "ORD" . rand(11111, 999999) ?>">
                                 <input type="hidden" name="cartid" value="<?php echo $cartid; ?>">
+                                
                                 <input type="hidden" name="netamount" value="<?php echo $netamount; ?>">
 
                                 <input type="submit" name="btnorder" id="update" value="Place Order Now" class="shop-btn">
