@@ -34,7 +34,7 @@
                 <thead>
                   <tr>
                     <th>Product Image</th>
-                    <th>Product ID</th>
+                    <th>Product Code</th>
                     <th>Product Price</th>
                   </tr>
                 </thead>

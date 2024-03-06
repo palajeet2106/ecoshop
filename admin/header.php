@@ -237,7 +237,7 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-               User Details
+               Customer Details
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -248,9 +248,34 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>View User</p>
                 </a>
+
+              </li>
+
+            </ul>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+               Order Details
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+
                 <a href="order-details.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Order Details</p>
+                </a>
+                <a href="order-details.php" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Success Orders</p>
+                </a>
+                <a href="order-details.php" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Canceled Orders</p>
                 </a>
               </li>
 

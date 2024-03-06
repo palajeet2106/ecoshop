@@ -26,7 +26,7 @@
              <tr>
               <th>Sno</th>
               <th>OrderId</th>
-              <th>UserId</th>
+              <th>customerId</th>
               <th>Qty</th>
               <th>Payment Mode</th>
               <th>CartId</th>
