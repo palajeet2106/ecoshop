@@ -39,7 +39,7 @@
         <tbody>
           <?php
 
-          $res = $db ->orderDetails();
+          $res = $db ->orderDetailsSuccess();
           if(mysqli_num_rows($res) > 0){
             $sn = 1;
             while($row = mysqli_fetch_assoc($res)){
@@ -48,22 +48,12 @@
                 <td>
                   <?php echo $sn; ?>
                 </td>
-                <!-- <td>
-                  <a href="order-item-details.php?id=<?php //echo $row['id'];?>&orderid=<?php //echo $row['order_id'];?>" class="btn btn-warning text-white">
-                  <?php //echo $row['order_id']; ?></a>
-                </td> -->
-
                 <td>
-                  <a class="btn btn-warning text-white" href="#" data-target="#orderModal<?php echo $row['id'];?>" data-toggle="modal"><?php echo $row['order_id']; ?></a>
-
-                  <?php include "orderModal.php";?>
-
-
+                  <a href="order-item-details.php?id=<?php echo $row['id'];?>&orderid=<?php echo $row['order_id'];?>" class="btn btn-warning text-white">
+                  <?php echo $row['order_id']; ?></a>
                 </td>
                 <td>
-                  <a href="#" data-target="#userModal<?php echo $row['id'];?>" data-toggle="modal" class="btn btn-warning text-white"><?php echo $row['userid']; ?></a>
-
-                  <?php include "CustomerModal.php";?>
+                  <a href="user-details.php?id=<?php echo $row['userid']; ?>" class="btn btn-warning text-white"><?php echo $row['userid']; ?></a>
                 </td>
                 <td>
                     <?php echo $db->countOrderItems($row['order_id']);?>
@@ -84,7 +74,7 @@
                   <?php echo $row['order_date']; ?>
                 </td>
                 <td>
-                  <?php echo (($row['status'] == 1)) ? "success" : "pending"; ?>
+                  <?php echo (($row['status'] == 1) ? "success" : "cancel"); ?>
                 </td>
               </tr>
               <?php

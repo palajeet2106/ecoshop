@@ -374,8 +374,7 @@ class connection
   }
 
   function orderDetails(){
-    // $userid = $_SESSION['userid'];
-    $sql = "SELECT * FROM bill_details";
+    $sql = "SELECT * FROM bill_details ORDER BY id DESC";
     $res = mysqli_query($this ->conn , $sql);
     return $res;
   }
@@ -404,6 +403,25 @@ class connection
     }
     return $data;
   }
+
+  function userDetails($userid){
+    $sql = "SELECT * FROM user WHERE id = '$userid'";
+    $res = mysqli_query($this ->conn , $sql);
+
+    return $res;
+  }
+
+  function orderDetailsSuccess(){
+    $sql = "SELECT * FROM bill_details WHERE status = 1";
+    $res = mysqli_query($this ->conn , $sql);
+    return $res;
+  }
+  function orderDetailsPending(){
+    $sql = "SELECT * FROM bill_details WHERE status = 'pending'";
+    $res = mysqli_query($this ->conn , $sql);
+    return $res;
+  }
+
 
 
 

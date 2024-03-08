@@ -1,6 +1,16 @@
 <?php 
 include("class.php");
-include("header.php"); ?>
+include("header.php"); 
+if(!isset($_SESSION['userid'])){
+    ?>
+    <script>
+        window.location.href = "login.php";
+    </script>
+    <?php
+}
+
+
+?>
     <!--------------- header-section-end --------------->
 
     <!--------------- blog-tittle-section---------------->
@@ -1796,6 +1806,8 @@ include("header.php"); ?>
             </div>
         </div>
     </section>
+
+    
     <!--------------- user-profile-section-end --------------->
 
     <!--------------- footer-section--------------->

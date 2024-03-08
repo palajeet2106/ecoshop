@@ -269,14 +269,19 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Order Details</p>
                 </a>
-                <a href="order-details.php" class="nav-link active">
+                <a href="order-success.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Success Orders</p>
                 </a>
-                <a href="order-details.php" class="nav-link active">
+                <a href="order-pending.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Canceled Orders</p>
+                  <p>Pending Orders</p>
                 </a>
+                <a href="order-cancel.php" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cancel Orders</p>
+                </a>
+
               </li>
 
             </ul>
