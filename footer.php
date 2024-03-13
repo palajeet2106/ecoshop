@@ -41,8 +41,11 @@
                     <div class="row gy-5">
                         <div class="col-lg-3 col-sm-6">
                             <div class="footer-order">
+                            <?php $res = $db ->viewAdminDetails();
+                                $row = mysqli_fetch_assoc($res);
+                                 ?>
                                 <div class="logo">
-                                    <img src="assets/images/logos/footer-logo.webp" alt="logo">
+                                    <img src="admin/<?php echo $row['logo']; ?>" alt="logo">
                                 </div>
                                 <div class="footer-link order-link">
                                     <ul>
@@ -116,7 +119,7 @@
                                         </div>
                                         <div class="details">
                                             <h4 class="footer-heading">Address:</h4>
-                                            <p>4517 Washington Ave. Manchester, Kentucky 39495</p>
+                                            <p><?php echo $row['address']; ?></p>
                                         </div>
                                     </div>
                                     <div class="phone address">
@@ -142,7 +145,7 @@
                                         </div>
                                         <div class="details">
                                             <h4 class="footer-heading">Phone:</h4>
-                                            <p>+880171889547</p>
+                                            <p>+91 <?php echo $row['contact']; ?></p>
                                         </div>
                                     </div>
                                     <div class="email address">
@@ -159,7 +162,7 @@
                                         </div>
                                         <div class="details">
                                             <h4 class="footer-heading">Email:</h4>
-                                            <p>echoShop@gmail.com</p>
+                                            <p><?php echo $row['email']; ?></p>
                                         </div>
                                     </div>
                                 </div>

@@ -180,6 +180,29 @@ if(isset($_POST['login'])){
 }
 }
 
+if(isset($_POST['submitAdmin'])){
+  if($res = $db ->createAdmin()){
+    ?>
+    <script>
+      alert("Record Created");
+      window.location.href = "add-admin.php";
+    </script>
+    <?php
+  }
+
+}
+
+if(isset($_POST['updateAdmin'])){
+  if($res = $db ->updateAdmin($_POST['adminId'])){
+    ?>
+    <script>
+       alert("Record Updated");
+      window.location.href = "view-admin.php";
+    </script>
+    <?php
+  }
+}
+
 if(isset($_POST['cid']) && isset($_POST['cmd']) && $_POST['cmd'] == 'getState'){
   $res =  $db -> state ($_POST['cid'] , 0);
 

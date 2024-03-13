@@ -105,10 +105,15 @@
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <?php
+     include("class.php");
+     $res = $db ->viewAdminDetails();
+     $row = mysqli_fetch_assoc($res);
+    ?>
     <!-- Brand Logo -->
-    <a href="index2.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <a href="index.php" class="brand-link">
+      <img src="<?php echo $row['logo']; ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8; height: 60px; width : 60px; border-radius : 50%;">
+      <span class="brand-text font-weight-light"><?php echo $row['companyname']; ?></span>
     </a>
 
     <!-- Sidebar -->
@@ -119,7 +124,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="index.php" class="d-block"><?php echo $row['username']; ?></a>
         </div>
       </div>
 
@@ -150,7 +155,32 @@
             </a>
 
           </li>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+               Admin
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
 
+              <li class="nav-item">
+                <a href="add-admin.php" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Admin Details</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="view-admin.php" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Admin Details</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
 
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">

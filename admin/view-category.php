@@ -1,5 +1,5 @@
 <?= include "header.php";
-    include "class.php";
+    // include "class.php";
 ?>
 
 <div class="content-wrapper">

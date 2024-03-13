@@ -402,7 +402,11 @@ class connection{
     return $res;
   }
 
-
+  function viewAdminDetails(){
+    $sql = "SELECT * FROM admin";
+    $res = mysqli_query($this->conn , $sql);
+    return $res;
+   }
 
   
 

@@ -409,8 +409,58 @@ class connection
     return $res;
   }
 
+   function createAdmin(){
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $address = $_POST['address'];
+    $password =md5( $_POST['password']);
+    $company = ( $_POST['companyName']);
+    $file = $_FILES['logo']['name'];
+    $folder = "uploads/";
+    $path = $folder.basename($file);
+    move_uploaded_file($_FILES['logo']['tmp_name'] , $path);
 
+    $sql = "INSERT INTO `admin`(`companyname`,`username`, `email`, `contact`, `logo`, `address`, `password`) VALUES ('$company','$username' , '$email' , '$contact' , '$path' ,'$address' ,'$password')";
+    $res = mysqli_query($this ->conn , $sql);
+    return $res;
 
+   }
+
+   function viewAdminDetails(){
+    $sql = "SELECT * FROM admin";
+    $res = mysqli_query($this->conn , $sql);
+    return $res;
+   }
+
+   function editAdmin($id){
+     $sql = "SELECT * FROM admin WHERE id = '$id'";
+     $res = mysqli_query($this ->conn , $sql);
+     return $res;
+
+   }
+
+   function updateAdmin($id){
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $address = $_POST['address'];
+    $company = ( $_POST['companyName']);
+    $file = $_FILES['logo']['name'];
+    if(!empty(basename($file))){
+      $folder = "uploads/";
+      $path = $folder.basename($file);
+    }else{
+      $path = $_POST['logoDb'];
+    }
+
+    move_uploaded_file($_FILES['logo']['tmp_name'] , $path);
+
+    $sql = "UPDATE `admin` SET `username`='$username',`email`='$email',`contact`='$contact',`logo`='$path',`address`='$address' ,`companyname` = '$company' WHERE  id = '$id'";
+    $res = mysqli_query($this ->conn , $sql);
+     return $res;
+
+   }
 
 
   function adminLogin(){
