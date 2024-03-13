@@ -26,7 +26,8 @@
              <tr>
               <th>Sno</th>
               <th>OrderId</th>
-              <th>User Id</th>
+              <th>CustomerId</th>
+              <th>UserId</th>
               <th>Qty</th>
               <th>Payment Mode</th>
               <th>CartId</th>
@@ -55,20 +56,20 @@
 
                 <td>
                   <a class="btn btn-warning text-white" href="#" data-target="#orderModal<?php echo $row['id'];?>" data-toggle="modal"><?php echo $row['order_id']; ?></a>
-
                   <?php include "orderModal.php";?>
-
-
                 </td>
                 <td>
-                  <a href="#" data-target="#userModal<?php echo $row['id'];?>" data-toggle="modal" class="btn btn-warning text-white"><?php echo $row['userid']; ?></a>
+                  <a href="#" data-target="#userModal<?php echo $row['id'];?>" data-toggle="modal" class="btn btn-warning text-white"><?php echo $row['customerid']; ?></a>
 
                   <?php include "CustomerModal.php";?>
                 </td>
                 <td>
-                    <?php echo $db->countOrderItems($row['order_id']);?>
+                <?php echo $row['userid']; ?>
                 </td>
                 <td>
+                    <?php echo $db->countOrderItems($row['order_id']);?>
+                </td>
+                <td >
                   <?php echo $row['payment_mode']; ?>
                 </td>
                 <td>

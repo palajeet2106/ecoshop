@@ -4,6 +4,14 @@
       text-transform: capitalize;
       font-size: 20px;
   }
+  .bt{
+    background-color: green;
+    color: white;
+    height: 50px;
+    width: 150px;
+    margin-left: 40px;
+    border-radius: 5px;
+  }
 </style>
 <div class="modal fade" id="userModal<?php echo $row['id'];?>">
   <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -37,6 +45,8 @@
                     <li><b>Email </b> : <?php echo $customer['email'];?></li>
                   </ul>
 
+                  <button type = "button" class = "bt">Dispatched Order</button>
+
               </div>
             </div>
           <?php
@@ -49,8 +59,10 @@
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <p id="statusResult"></p>
       </div>
 
     </div>
   </div>
 </div>
+

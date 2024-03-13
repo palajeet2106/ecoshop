@@ -12,17 +12,20 @@ include("header.php");
             <div class="row align-items-center">
                 <div class="col-lg-6 col-xs-12">
                     <form action="function.php" method="post" enctype="multipart/form-data">
-                        <!-- <div class="review-form box-shadows" style="height: 1000px;"> -->
-                        <div class="review-form box-shadows">
+                        <div class="review-form box-shadows" style="height: 700px;">
+                        <!-- <div class="review-form box-shadows"> -->
                             <div class="review-form-text">
                                 <h5 class="comment-title">Create Account</h5>
                                 <img src="assets/images/homepage-one/vector-line.png" alt="img">
                             </div>
-                            <div class=" account-inner-form">
-                                
+                            <div class=" account-inner-form">    
                                 <div class="review-form-name">
                                     <label for="username" class="form-label">Username*</label>
                                     <input type="text" name="username" class="form-control" placeholder="username">
+                                </div>
+                                <div class="review-form-name">
+                                    <label for="customerid" class="form-label">Customer Id*</label>
+                                    <input type="text" name="customerid" class="form-control" value="<?php echo "CUSTO".rand(11111 , 99999); ?>" readonly>
                                 </div>
                                 <div class="review-form-name">
                                     <label for="email" class="form-label">Email*</label>

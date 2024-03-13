@@ -161,24 +161,33 @@ if(isset($_POST['update'])){
 }
 
 if(isset($_POST['login'])){
-  if($res = $db ->adminLogin()){
-    ?>
-    <script>
-      window.location.href = "index.php";
-    </script>
-    <?php
-  }
+  $res = $db ->adminLogin();
+  if(mysqli_num_rows($res) == 1){
+    while($row = mysqli_fetch_assoc($res)){
+      ?>
+      <script>
+        window.location.href = "index.php";
+      </script>
+      <?php
+    }
+}else{
+  ?>
+  <script>
+    alert("Invalid username or password");
+    window.location.href = "login.php";
+  </script>
+  <?php
+}
 }
 
 if(isset($_POST['cid']) && isset($_POST['cmd']) && $_POST['cmd'] == 'getState'){
-  $res =  $db -> state ($_POST['cid'] );
+  $res =  $db -> state ($_POST['cid'] , 0);
 
 }
 if(isset($_POST['sid']) && isset($_POST['cmd']) && $_POST['cmd'] == 'getCity'){
-  $res =  $db -> city ($_POST['sid']);
+  $res =  $db -> city ($_POST['sid'] , 0);
 
 }
-
 
 
 

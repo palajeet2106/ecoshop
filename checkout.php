@@ -1,14 +1,20 @@
 <?php
 include("class.php");
 include("header.php");
-$summary = $db->ordersummary();
-if (mysqli_num_rows($summary) == 0) {
-?>
-    <script>
-        window.location.href = "index.php";
-    </script>
 
-<?php
+
+
+if(isset($_REQUEST['pid'])){
+    $summary = $db->ordersummary($_REQUEST['pid']);
+
+    if (mysqli_num_rows($summary) == 0) {
+    ?>
+        <script>
+            window.location.href = "index.php";
+        </script>
+
+    <?php
+    }
 }
 ?>
 <!--------------- header-section-end --------------->
@@ -47,6 +53,13 @@ if (mysqli_num_rows($summary) == 0) {
                                     <div class="account-section billing-section box-shadows">
                                         <h5 class="wrapper-heading">Billing Details</h5>
                                         <div class="review-form">
+                                            <div class=" account-inner-form">
+                                                <div class="review-form-name">
+                                                    <label for="customerid" class="form-label">Customer Id*</label>
+                                                    <input type="text" id="customerid" name="customerid" class="form-control" value="<?php echo $row['customerid']; ?>">
+                                                </div>
+                                                
+                                            </div>
                                             <div class=" account-inner-form">
                                                 <div class="review-form-name">
                                                     <label for="firstName" class="form-label">First Name*</label>

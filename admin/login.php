@@ -26,11 +26,11 @@
           <h2 class="text-center mb-4">Login</h2>
           <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" name="username" name="username" required>
+            <input type="text" class="form-control"  name="username" placeholder="Enter username" required>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" name="password" required>
+            <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
           </div>
           <button type="submit" class="btn btn-primary btn-block" name = "login">Login</button>
         </form>

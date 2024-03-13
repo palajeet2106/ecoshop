@@ -249,9 +249,9 @@ include "header.php" ;
                                             <!-- <a href="cart.php" class="product-btn">
                                                 <span class="btn-text">Add To Cart</span>
                                             </a> -->
-                                     <form method="post" action="function.php">
-                                       <input type="hidden" name="pid" value="<?php echo $row['id'];?>">
-                                      <button type="submit" name="btnaddcart" class="product-btn"> 
+                                            <form method="post" action="function.php">
+                                            <input type="hidden" name="pid" value="<?php echo $row['id'];?>">
+                                            <button type="submit" name="btnaddcart" class="product-btn"> 
                                          Add To Cart
                                         </button>
                                     </form>

@@ -37,6 +37,12 @@ include("header.php");
                 <table>
                     <tbody>
                         <tr class="table-row table-top-row">
+                            <th class="table-wrapper wrapper-product">
+                                <div class="table-wrapper-center">
+                                    <h5 class="table-heading">Select All <span><input type="checkbox" id="checkbox"></span></h5>  
+                                </div>
+
+                            </th>
                             <td class="table-wrapper wrapper-product">
                                 <h5 class="table-heading">PRODUCT</h5>
                             </td>
@@ -64,12 +70,21 @@ include("header.php");
 
                         <?php
 
-            if(mysqli_num_rows($res)>0){
+             if(mysqli_num_rows($res)>0){
                 while($row= mysqli_fetch_assoc($res)){
                     $data= mysqli_fetch_assoc($db->viewProducts($row['productid']));
                     ?>
                         <tr class="table-row ticket-row">
-                            <td class="table-wrapper wrapper-product">
+                            <td class="table-wrapper">
+                                <div class="table-wrapper-center">
+                                    <div class="wrapper-content">
+                                        <input type="checkbox" name="pid[]" class="checkboxBtn"  value="<?php echo $data['id'];?>" >
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td class="table-wrapper">
+
                                 <div class="wrapper">
                                     <div class="wrapper-img">
                                         <img src="admin/<?php echo $data['featuredPhoto'] ?>" alt="img">
@@ -159,8 +174,6 @@ include("header.php");
                                         }
 
                                     })
-
-
                                     $("#updatecart<?php echo $row['id'];?>").click(function(){
                                     
                                         $.ajax({
@@ -201,10 +214,27 @@ include("header.php");
             <div class="wishlist-btn cart-btn">
                 <!-- <a href="empty-cart.php" class="clean-btn">Clear Cart</a>-->
                 <a href="index.php" class="shop-btn ">Continue Shopping</a>
-                <a href="checkout.php" class="shop-btn">Proceed to Checkout</a>
+                <a href="#" class="shop-btn" id="btncheckout">Proceed to Checkout</a>
             </div>
         </div>
     </section>
+
+    <script>
+        $(function(){
+            $("#btncheckout").click(function(){
+
+                var pid= new Array()
+                $("input:checkbox[type=checkbox]:checked").each(function(){
+                    pid.push($(this).val())
+                })
+
+                pidstring= pid.toString()
+                window.location.href="checkout.php?pid="+pidstring
+                
+            })
+           
+        })
+    </script>
     <!--------------- cart-section-end---------------->
 
     <!--------------- footer-section--------------->
@@ -212,3 +242,33 @@ include("header.php");
 
     <!--------------- footer-section-end--------------->
 
+<!-- <script>
+$(document).ready(function(){
+    $('#checkbox').change(function(){
+        $('.checkboxBtn').prop('checked', $(this).prop('checked'));
+        updateCheckboxes();
+    });
+    
+    $('.checkboxBtn').change(function() {
+        if(!$(this).prop('checked')) {
+            $('#checkbox').prop('checked', false);
+        }
+        updateCheckboxes();
+    });
+    
+    function updateCheckboxes() {
+        var selectedCheckboxes = $('.checkboxBtn:checked').map(function() {
+            return this.value;
+        }).get();
+        
+        // $.ajax({
+        //     type: "POST",
+        //     url: "function.php",
+        //     data: { options: selectedCheckboxes },
+        //     success: function(response) {
+        //         console.log(response);
+        //     }
+        // });
+    }
+});
+</script> -->

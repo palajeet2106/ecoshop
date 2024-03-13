@@ -26,6 +26,7 @@
              <tr>
               <th>Sno</th>
               <th>OrderId</th>
+              <th>Customer Id</th>
               <th>User Id</th>
               <th>Qty</th>
               <th>Payment Mode</th>
@@ -49,15 +50,21 @@
                   <?php echo $sn; ?>
                 </td>
                 <td>
-                  <a href="order-item-details.php?id=<?php echo $row['id'];?>&orderid=<?php echo $row['order_id'];?>" class="btn btn-warning text-white">
-                  <?php echo $row['order_id']; ?></a>
+                  <a class="btn btn-warning text-white" href="#" data-target="#orderModal<?php echo $row['id'];?>" data-toggle="modal"><?php echo $row['order_id']; ?></a>
+                  <?php include "orderModal.php";?>
                 </td>
                 <td>
-                  <a href="user-details.php?id=<?php echo $row['userid']; ?>" class="btn btn-warning text-white"><?php echo $row['userid']; ?></a>
+                  <a href="#" data-target="#userModal<?php echo $row['id'];?>" data-toggle="modal" class="btn btn-warning text-white"><?php echo $row['customerid']; ?></a>
+
+                  <?php include "CustomerModal.php";?>
+                </td>
+                <td>
+                <?php echo $row['userid']; ?>
                 </td>
                 <td>
                     <?php echo $db->countOrderItems($row['order_id']);?>
                 </td>
+
                 <td>
                   <?php echo $row['payment_mode']; ?>
                 </td>
@@ -70,10 +77,10 @@
                 <td>
                   <?php echo $row['payment_status']; ?>
                 </td>
-                <td>
+                <td >
                   <?php echo $row['order_date']; ?>
                 </td>
-                <td>
+                <td class="bg-success">
                   <?php echo (($row['status'] == 1) ? "success" : "cancel"); ?>
                 </td>
               </tr>

@@ -13,7 +13,8 @@ class connection{
   {
 
     $sql = "SELECT * FROM category";
-    return mysqli_query($this->conn, $sql);
+    $res =  mysqli_query($this->conn, $sql);
+    return $res;
   }
 
 
@@ -126,7 +127,7 @@ class connection{
     $path = $folder.basename($file);
     move_uploaded_file($_FILES['pic']['tmp_name'] , $path);
 
-    $sql = "INSERT INTO `user`(`username`, `firstName`, `lastName`, `email`, `contact`, `pic`, `country`, `state`, `city`, `address`, `pincode`, `password`) VALUES ('".$_POST['username']."','".$_POST['firstName']."','".$_POST['lastName']."','".$_POST['email']."','".$_POST['contact']."', '$path' , '".$_POST['country']."','".$_POST['state']."','".$_POST['city']."' ,'".$_POST['address']."' ,'".$_POST['pinCode']."' , '".md5($_POST['password'])."')";
+    $sql = "INSERT INTO `user`(`customerid`,`username`, `firstName`, `lastName`, `email`, `contact`, `pic`, `country`, `state`, `city`, `address`, `pincode`, `password`) VALUES ('".$_POST['customerid']."','".$_POST['username']."','".$_POST['firstName']."','".$_POST['lastName']."','".$_POST['email']."','".$_POST['contact']."', '$path' , '".$_POST['country']."','".$_POST['state']."','".$_POST['city']."' ,'".$_POST['address']."' ,'".$_POST['pinCode']."' , '".md5($_POST['password'])."')";
     $res = mysqli_query($this ->conn , $sql);
     return $res;
   }
@@ -281,7 +282,6 @@ class connection{
 
   function addCart(){
     if(isset($_SESSION['userid'])){
-
       $userid= $_SESSION['userid'];
       if($this->getCart($userid)){
         $sql= "SELECT id FROM cart WHERE userid='$userid'";
@@ -321,7 +321,7 @@ class connection{
   }
 
 
-  function cartItems($cartid, $userid, $qty, $pid){
+  function cartItems($cartid, $userid, $qty, $pid ){
 
     $sql= "SELECT * FROM cart_items WHERE productid='$pid' and cartid='$cartid'";
     $res= mysqli_query($this->conn, $sql);
@@ -362,9 +362,10 @@ class connection{
     return $res;
   }
 
-  function ordersummary(){
+  function ordersummary($pid){
     $userid=$_SESSION['userid'];
-    $sql= "SELECT * FROM cart_items WHERE userid='$userid'";
+
+    $sql= "SELECT * FROM cart_items WHERE userid='$userid' AND productid IN($pid)";
     $res= mysqli_query($this->conn, $sql);
     return $res;
 
@@ -372,6 +373,7 @@ class connection{
 
   function sendOrder(){
     $userid= $_SESSION['userid'];
+    $customerid= $_POST['customerid'];
     $cartid= $_POST['cartid'];
     $orderid= $_POST['orderid'];
     $netamount= $_POST['netamount'];
@@ -380,15 +382,15 @@ class connection{
     $pids=$_POST['pids'];
     $pidstring= implode(',', $pids);
 
-    $sql="INSERT INTO `bill_details`(`order_id`, `userid`, `payment_mode`, `cartid`, `product_ids`, `totalamount`) values(
+    $sql="INSERT INTO `bill_details`(`customerid` ,`order_id`, `userid`, `payment_mode`, `cartid`, `product_ids`, `totalamount`) values('$customerid',
       '$orderid', '$userid', '$paymentmode', '$cartid', '$pidstring', '$netamount')";
     if(mysqli_query($this->conn, $sql)){
-      return $this->deletecartafterorder($userid);
+      return $this->deletecartafterorder($userid, $pidstring);
     }
   }
 
-  function deletecartafterorder($userid){
-    $sql= "DELETE FROM cart_items WHERE userid='$userid'";
+  function deletecartafterorder($userid, $pids){
+    $sql= "DELETE FROM cart_items WHERE userid='$userid' and productid IN($pids)";
     return mysqli_query($this->conn, $sql);
   }
 

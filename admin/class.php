@@ -361,18 +361,6 @@ class connection
 
   }
 
-
-
-
-  function adminLogin(){
-    $email = $_POST['email'];
-    $password = md5($_POST['password']);
-    $sql = "SELECT * FROM admin WHERE email = '$email' AND password = '$password'";
-    $res = mysqli_query($this ->conn , $sql);
-    return $res;
-
-  }
-
   function orderDetails(){
     $sql = "SELECT * FROM bill_details ORDER BY id DESC";
     $res = mysqli_query($this ->conn , $sql);
@@ -404,10 +392,9 @@ class connection
     return $data;
   }
 
-  function userDetails($userid){
-    $sql = "SELECT * FROM user WHERE id = '$userid'";
+  function userDetails($customerid){
+    $sql = "SELECT * FROM user WHERE id = '$customerid'";
     $res = mysqli_query($this ->conn , $sql);
-
     return $res;
   }
 
@@ -425,7 +412,19 @@ class connection
 
 
 
-}
+
+  function adminLogin(){
+    $username = $_POST['username'];
+    $password = md5($_POST['password']);
+    $sql = "SELECT * FROM admin WHERE username = '$username' AND password = '$password'";
+    $res = mysqli_query($this ->conn , $sql);
+    return $res;
+    }
+
+
+  }
+
+
 
 $db = new connection();
 

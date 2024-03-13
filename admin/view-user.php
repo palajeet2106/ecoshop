@@ -26,6 +26,7 @@
           <tr>
             <th>Sno</th>
             <th>Username</th>
+            <th>Customer Id</th>
             <th>Photo</th>
             <th>Name</th>
             <th>Email</th>
@@ -50,6 +51,9 @@
               </td>
               <td>
                 <?php echo $row['username']; ?>
+              </td>
+              <td>
+                <?php echo $row['customerid']; ?>
               </td>
               <td>
                 <img src="<?php echo $row['pic']; ?>" alt="pic" height="80" width="80">
