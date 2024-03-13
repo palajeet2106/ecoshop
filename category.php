@@ -27,46 +27,7 @@ include "header.php" ;
                                             <input type="checkbox" id="veg" name="veg">
                                             <label for="veg">Vegetable</label>
                                         </li>
-                                        <li>
-                                            <input type="checkbox" id="fruits" name="fruits">
-                                            <label for="fruits">Fruits</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" id="juice" name="juice">
-                                            <label for="juice">Juice</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" id="meat" name="meat">
-                                            <label for="meat">Meat</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" id="smoothie" name="smoothie">
-                                            <label for="smoothie">Smoothie</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" id="bread" name="bread">
-                                            <label for="bread">Bread</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" id="seaf" name="seaf">
-                                            <label for="seaf">Sea Foods</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" id="petf" name="petf">
-                                            <label for="petf">Pet Foods</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" id="grooming" name="grooming">
-                                            <label for="grooming">Milk & Drinks</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" id="drinks" name="drinks">
-                                            <label for="drinks">Drinks</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" id="protein" name="protein">
-                                            <label for="protein">Protein</label>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </div>
